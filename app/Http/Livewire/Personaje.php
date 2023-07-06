@@ -6,15 +6,15 @@ use Livewire\Component;
 
 class Personaje extends Component
 {
-    public $modalPrueba = false; 
+    public $modalpersonaje = false; 
     
     public function render()
     {
         return view('livewire.personaje');
     }
 
-    public function modalprueba()
+    public function consultarpersonaje()
     {
-        $this->modalPrueba = true;
+        $this->modalpersonaje = true;
     }
 }

@@ -1,12 +1,12 @@
 <div>
     <p class="m-4 dark:text-gray-200">Hola Mundo XD</p>
 
-    <x-secondary-button wire:click="modalprueba()" wire:loading.attr="disabled">
+    <x-secondary-button wire:click="consultarpersonaje()" wire:loading.attr="disabled">
         {{ __('Modal') }}
     </x-secondary-button>
 
      <!-- Delete User Confirmation Modal -->
-     <x-dialog-modal wire:model="modalPrueba">
+     <x-dialog-modal wire:model="modalpersonaje">
         <x-slot name="title">
             {{ __('Delete Account') }}
         </x-slot>
@@ -18,7 +18,7 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-secondary-button wire:click="$toggle('modalPrueba')" wire:loading.attr="disabled">
+            <x-secondary-button wire:click="$toggle('modalpersonaje')" wire:loading.attr="disabled">
                 {{ __('Cancel') }}
             </x-secondary-button>
 
