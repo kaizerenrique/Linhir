@@ -169,12 +169,14 @@
                         <thead>
                             <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                                 <th class="px-4 py-3">Nombre</th>
-                                <th class="px-4 py-3">Correo</th>
-                                <th class="px-4 py-3">Rol</th>
-                                <th class="px-4 py-3">Ultima Actividad</th>
-                                <th class="px-4 py-3">Tokens Generados</th>
-                                <th class="px-4 py-3">Limite de Tokens</th>
-                                <th class="px-4 py-3">Token Restantes</th>
+                                <th class="px-4 py-3">Fama PVE</th>
+                                <th class="px-4 py-3">Fibra</th>
+                                <th class="px-4 py-3">Piel</th>
+                                <th class="px-4 py-3">Mineral</th>
+                                <th class="px-4 py-3">Roca</th>
+                                <th class="px-4 py-3">Madera</th>
+                                <th class="px-4 py-3">Pesca</th>
+                                <th class="px-4 py-3">Elaboración</th>
                                 <th class="px-4 py-3">Acciones</th>
                             </tr>
                         </thead>
@@ -182,8 +184,43 @@
                             @foreach ($miembros as $miembro )
                                 <tr class="text-gray-700 dark:text-gray-100">                                           
                                     <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                        {{$miembro->Id}}                                                                          
-                                    </th> 
+                                        {{$miembro->Name}}                                                                          
+                                    </th>
+                                    @foreach ($integrantes as $integrante )
+                                        @if ($miembro->Id_albion == $integrante->Id) 
+                                            <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
+                                                {{number_format($integrante->LifetimeStatistics->PvE->Total)}}    
+                                            </th>
+                                            
+                                            <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
+                                                {{number_format($integrante->LifetimeStatistics->Gathering->Fiber->Total)}}    
+                                            </th>
+
+                                            <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
+                                                {{number_format($integrante->LifetimeStatistics->Gathering->Hide->Total)}}    
+                                            </th>
+
+                                            <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
+                                                {{number_format($integrante->LifetimeStatistics->Gathering->Ore->Total)}}    
+                                            </th>
+
+                                            <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
+                                                {{number_format($integrante->LifetimeStatistics->Gathering->Rock->Total)}}    
+                                            </th>
+
+                                            <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
+                                                {{number_format($integrante->LifetimeStatistics->Gathering->Wood->Total)}}    
+                                            </th>
+
+                                            <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
+                                                {{number_format($integrante->LifetimeStatistics->FishingFame)}}    
+                                            </th>
+
+                                            <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
+                                                {{number_format($integrante->LifetimeStatistics->Crafting->Total)}}    
+                                            </th>
+                                        @endif
+                                    @endforeach   
                                 </tr>                            
                             @endforeach   
                             
@@ -193,7 +230,7 @@
                 <div class="grid px-4 py-3 text-xs font-semibold tracking-wide uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9
                              dark:text-gray-300 dark:bg-gray-800">
                     <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                        
+                        {{ $miembros->links() }} 
                     </span>            
                 </div>
             </div>

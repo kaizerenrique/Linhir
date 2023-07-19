@@ -4,6 +4,7 @@ namespace App\Traits\AlbionOnline;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Models\Personaje;
 
 trait Gremio
 {
@@ -84,10 +85,22 @@ trait Gremio
 
 			$respuesta = $response->getBody()->getContents();// accedemos a el contenido			
 
-            $respuesta = json_decode($respuesta); //convertimos en json	
+            $integrantes = json_decode($respuesta);
 
+
+			foreach ($integrantes as $integrante) {
+				if (Personaje::where('Id_albion', $integrante->Id)->exists()) {
+					$info = $integrantes;
+				} else {
+					$info = Personaje::create([
+						'Id_albion' => $integrante->Id,
+						'Name' => $integrante->Name,
+						'GuildId' => $integrante->GuildId
+					]);
+				}
+			}
 			
-			return $respuesta;
+			return $info;
 			
 
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
