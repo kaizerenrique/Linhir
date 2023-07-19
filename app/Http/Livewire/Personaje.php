@@ -4,15 +4,15 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use \App\Traits\AlbionOnline\Datospersonaje;
+use \App\Traits\Notificaciones\Discord;
 use Livewire\WithPagination;
-
-
-
 
 class Personaje extends Component
 {
     use Datospersonaje;
     use WithPagination;
+    use Discord;
+    
 
     public $modalpersonaje = false; 
     public $buscar;
@@ -28,10 +28,9 @@ class Personaje extends Component
         $identificador = 'iPSdBmtiSoSAL1Sp2DX1YQ';
         $resps = $this->deaths($identificador);
 
+        $alfa = $this->notificacion();
 
-        
-
-        dd($resps);
+        dd($alfa);
         
         return view('livewire.personaje',[
             'resultados' => $resultados,

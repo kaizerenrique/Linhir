@@ -109,10 +109,9 @@ trait Gremio
             $url = 'https://gameinfo.albiononline.com/api/gameinfo/guilds/';
 			$response = Http::get($url.$linhir_id.'/members');
 
-			$respuesta = $response->getBody()->getContents();// accedemos a el contenido			
+			$respuesta = $response->getBody()->getContents();// accedemos a el contenido	
 
             $integrantes = json_decode($respuesta);
-
 
 			foreach ($integrantes as $integrante) {
 				if (Personaje::where('Id_albion', $integrante->Id)->exists()) {
