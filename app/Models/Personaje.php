@@ -18,4 +18,9 @@ class Personaje extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function eventos()
+    {
+        return $this->hasMany(Evento::class, 'personaje_id');
+    }
 }

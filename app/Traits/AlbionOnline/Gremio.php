@@ -57,10 +57,8 @@ trait Gremio
 			$respuesta = $response->getBody()->getContents();// accedemos a el contenido			
 
             $respuesta = json_decode($respuesta); //convertimos en json	
-
 			
-			return $respuesta;
-			
+			return $respuesta;			
 
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
             //report($e);	 
@@ -87,8 +85,7 @@ trait Gremio
 
             $integrantes = json_decode($respuesta);
 			
-			return $integrantes;
-			
+			return $integrantes;			
 
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
             //report($e);	 

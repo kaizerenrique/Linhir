@@ -6,6 +6,9 @@ use Livewire\Component;
 use \App\Traits\AlbionOnline\Datospersonaje;
 use Livewire\WithPagination;
 
+
+
+
 class Personaje extends Component
 {
     use Datospersonaje;
@@ -21,6 +24,14 @@ class Personaje extends Component
     public function render()
     {
         $resultados = $this->consultar($this->buscar);
+
+        $identificador = 'iPSdBmtiSoSAL1Sp2DX1YQ';
+        $resps = $this->deaths($identificador);
+
+
+        
+
+        dd($resps);
         
         return view('livewire.personaje',[
             'resultados' => $resultados,
