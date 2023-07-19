@@ -86,6 +86,35 @@ trait Gremio
 			$respuesta = $response->getBody()->getContents();// accedemos a el contenido			
 
             $integrantes = json_decode($respuesta);
+			
+			return $integrantes;
+			
+
+        } catch (\Illuminate\Http\Client\ConnectionException $e) {
+            //report($e);	 
+	        return false;
+        }
+	}
+
+	/**
+	* Esta función realiza una consulta a la Pagina del gameinfo.albiononline 
+    * para buscar información de los integrantes de linhir
+	* 
+	* @param string   $text	cadena de texto que contiene el ID
+	*
+	* @return Retorna un array.
+	*/	
+
+    public function integrantesdelgremiolinhir()
+	{
+		$linhir_id = config('app.linhir_gremio_id');
+        try {
+            $url = 'https://gameinfo.albiononline.com/api/gameinfo/guilds/';
+			$response = Http::get($url.$linhir_id.'/members');
+
+			$respuesta = $response->getBody()->getContents();// accedemos a el contenido			
+
+            $integrantes = json_decode($respuesta);
 
 
 			foreach ($integrantes as $integrante) {
