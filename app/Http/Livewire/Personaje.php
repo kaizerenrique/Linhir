@@ -20,10 +20,8 @@ class Personaje extends Component
     
     public function render()
     {
-        //$texto = "BrandWard";
         $resultados = $this->consultar($this->buscar);
         
-        //dd($resultados);
         return view('livewire.personaje',[
             'resultados' => $resultados,
         ]);
