@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src="https://drive.google.com/uc?export=download&id=1eCCIrPRB9jp3qjfr1jzjHtz2qqnkGC2k" width="400"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="https://drive.google.com/uc?export=download&id=1eCCIrPRB9jp3qjfr1jzjHtz2qqnkGC2k" width="300"></a></p>
 
 # Linhir
 ## Gremio de Albion Online
