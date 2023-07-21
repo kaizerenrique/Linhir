@@ -14,10 +14,11 @@ trait Discord
     public function notificacion()
     {
         $date = Carbon::now();
+        $linhir_url_bot = config('app.linhir_bot_discord');
         $registro = 'Kills';
         $client = new Client();
 
-        $response = $client->post('https://discord.com/api/webhooks/1131277636715429908/e3cWEF6MJSXPgfUykRq2bjxrwD2UlB-OWxFy60sZPLwnGqxlh5K0EdCvczpgZAHxxlEa',[
+        $response = $client->post($linhir_url_bot,[
             'json' => [
                 "content" => "Prueba de mensaje", 
                 "username" => "Bot de mensaje", 
@@ -28,7 +29,7 @@ trait Discord
                         "title" => $registro, 
                         "type" => "rich", 
                         "description" => "Esta es una descripción",  
-                        "url" => "https://nubecolectiva.com/",  
+                        "url" => "https://linhir.xyz/",  
                         "timestamp" => $date, 
 
                         "thumbnail" => [
@@ -40,8 +41,8 @@ trait Discord
                         ],
  
                         "author" => [
-                            "name" => "Nube Colectiva",
-                            "url" => "https://nubecolectiva.com/" 
+                            "name" => "Linhir Web Bot",
+                            "url" => "https://linhir.xyz/" 
                         ] 
                     ] 
                 ]
