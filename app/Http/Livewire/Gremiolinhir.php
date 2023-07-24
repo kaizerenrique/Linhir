@@ -23,17 +23,21 @@ class Gremiolinhir extends Component
         $linhir_id = config('app.linhir_gremio_id');
         $informacion = $this->consultargremio($linhir_id);
         $integrantes = $this->integrantesdelgremio($linhir_id);
-
+        
         $lim = 6;
 
         $orden = Personaje::all();
-        if ($orden->isEmpty()) {
-            $llenar = $this->integrantesdelgremiolinhir();
-        } 
+
+        $num = count($integrantes);
+        $int = $orden->count();
+
+        if ($num = $int) {
+            $llenar = $this->integrantesdelgremiolinhir();                       
+        }        
         
 
         $miembros = Personaje::where('Name', 'like', '%'.$this->buscar . '%')  //buscar por nombre
-                      ->orderBy('id','desc') //ordenar de forma decendente
+                      ->orderBy('id') //ordenar de forma decendente
                       ->paginate($lim); //paginacion
 
                       
