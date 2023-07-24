@@ -11,7 +11,8 @@ class Evento extends Model
 
     protected $fillable = [
         'EventId',
-        'BattleId'
+        'BattleId',
+        'tipo'
     ];
 
     public function personaje(){

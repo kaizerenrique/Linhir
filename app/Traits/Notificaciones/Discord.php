@@ -11,16 +11,15 @@ use Carbon\Carbon;
 trait Discord
 {
 
-    public function notificacion()
+    public function notificacion($infonota)
     {
         $date = Carbon::now();
         $linhir_url_bot = config('app.linhir_bot_discord');
-        $registro = 'Kills';
+        $registro = $infonota['tip'];
         $client = new Client();
 
         $response = $client->post($linhir_url_bot,[
             'json' => [
-                "content" => "Prueba de mensaje", 
                 "username" => "Bot de mensaje", 
                 "avatar_url" => "https://www.korosenai.es/wp-content/uploads/2020/02/tanjiro-kamado.jpg", 
 
@@ -28,7 +27,7 @@ trait Discord
                     [ 
                         "title" => $registro, 
                         "type" => "rich", 
-                        "description" => "Esta es una descripción",  
+                        "description" => $infonota['description'],  
                         "url" => "https://linhir.xyz/",  
                         "timestamp" => $date, 
 
@@ -37,7 +36,7 @@ trait Discord
                         ],
  
                         "image" => [
-                            "url" => "https://www.korosenai.es/wp-content/uploads/2020/02/tanjiro-kamado.jpg"
+                            "url" => $infonota['imagen']
                         ],
  
                         "author" => [

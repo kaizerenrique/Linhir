@@ -27,10 +27,7 @@ class Personaje extends Component
 
         $identificador = 'iPSdBmtiSoSAL1Sp2DX1YQ';
         $resps = $this->deaths($identificador);
-
-        $alfa = $this->notificacion();
-
-        dd($alfa);
+        
         
         return view('livewire.personaje',[
             'resultados' => $resultados,

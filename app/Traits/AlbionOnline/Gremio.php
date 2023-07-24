@@ -5,9 +5,13 @@ namespace App\Traits\AlbionOnline;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Personaje;
+use \App\Traits\AlbionOnline\Datospersonaje;
 
 trait Gremio
 {
+	use Datospersonaje;
+
+
     /**
 	* Esta función realiza una consulta a la Pagina del gameinfo.albiononline 
     * para buscar información de los gremios por nombre. 
@@ -121,7 +125,7 @@ trait Gremio
 						'Id_albion' => $integrante->Id,
 						'Name' => $integrante->Name,
 						'GuildId' => $integrante->GuildId
-					]);
+					]);					
 				}
 			}
 			
@@ -132,5 +136,27 @@ trait Gremio
             //report($e);	 
 	        return false;
         }
+	}
+
+	public function revisarlinhir()
+	{
+		$GuildId = config('app.linhir_gremio_id');
+		$gremiolinhir = Personaje::where('GuildId', $GuildId )->get();
+
+		foreach ($gremiolinhir as $player) {
+			$deaths = $this->deaths($player->Id_albion);
+			$kills = $this->kills($player->Id_albion);			
+
+			if (!empty($deaths)) {
+				$alfa = $this->eventos($deaths , $player->Id_albion, $tipo= 'deaths' );
+			}
+
+			if (!empty($kills)) {
+				$beta = $this->eventos($kills , $player->Id_albion, $tipo= 'kills' );
+			}
+						
+		}
+
+		return $alfa;
 	}
 }    

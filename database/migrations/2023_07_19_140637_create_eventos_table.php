@@ -20,7 +20,7 @@ return new class extends Migration
 
             $table->string('EventId');
             $table->string('BattleId');
-
+            $table->enum('tipo',['deaths' , 'kills'])->nullable(); //tipo
             $table->timestamps();
         });
     }

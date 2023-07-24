@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Personaje;
 use App\Models\Evento;
+use \App\Traits\Notificaciones\Discord;
 
 trait Datospersonaje
 {
+	use Discord;
+
     /**
 	* Esta función realiza una consulta a la Pagina del gameinfo.albiononline 
     * para buscar información de los personajes. 
@@ -48,9 +51,7 @@ trait Datospersonaje
 
 			$respuesta = $response->getBody()->getContents();// accedemos a el contenido		
 
-            $respuesta = json_decode($respuesta); //convertimos en json	
-
-			$this->eventos($respuesta , $identificador);
+            $respuesta = json_decode($respuesta); //convertimos en json				
 
 			return $respuesta;			
 
@@ -69,9 +70,7 @@ trait Datospersonaje
 
 			$respuesta = $response->getBody()->getContents();// accedemos a el contenido		
 
-            $respuesta = json_decode($respuesta); //convertimos en json	
-
-			$this->eventos($respuesta , $identificador);			
+            $respuesta = json_decode($respuesta); //convertimos en json							
 
 			return $respuesta;			
 
@@ -82,30 +81,45 @@ trait Datospersonaje
 
 	}
 
-	public function eventos($respuesta , $identificador )
+	public function eventos($respuesta , $identificador , $tipo)
 	{
 		$configuraciones = Personaje::where('Id_albion', $identificador)->get();
 
-			foreach ($configuraciones as $config){
-				$idpersonaje = $config->id;
-			}
+		foreach ($configuraciones as $config){
+			$idpersonaje = $config->id;
+		}
 
-			$per = Personaje::find($config->id);
+		$per = Personaje::find($config->id);
 
-			foreach ($respuesta as $resp) {
-				if (Evento::where('EventId', $resp->EventId)->exists()) {
-					$info = 'false';
-				} else {
-
-					$info = $per->eventos()->create([
-						'EventId' => $resp->EventId,
-						'BattleId' => $resp->BattleId
-					]);
-				}
+		foreach ($respuesta as $resp) {
+			if (Evento::where('EventId', $resp->EventId)->exists()) {				
 				
-			}			
+			} else {
 
-			return $info;
+				$inf = $per->eventos()->create([
+					'EventId' => $resp->EventId,
+					'BattleId' => $resp->BattleId,
+					'tipo' => $tipo
+				]);	
 
+				if ($resp->Victim->GuildName == 'Linhir') {						
+					$infonota = [
+						'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
+						'tip' => 'Muerte',
+						'imagen' => 'https://media.tenor.com/4dikOAK9gaIAAAAC/soldado-caido-funeral.gif'
+					];	
+				} else {
+					$infonota = [
+						'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
+						'tip' => 'Victoria',
+						'imagen' => 'https://img.desmotivaciones.es/201305/klasdklsd.jpg'
+					];									
+				}
+
+				$notif = $this->notificacion($infonota);
+			}				
+		} 
+
+		return true;			
 	}
 }
