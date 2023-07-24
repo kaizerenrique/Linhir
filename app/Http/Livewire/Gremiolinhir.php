@@ -36,9 +36,6 @@ class Gremiolinhir extends Component
                       ->orderBy('id','desc') //ordenar de forma decendente
                       ->paginate($lim); //paginacion
 
-        //$gre = $this->revisarlinhir();
-
-        //dd($llenar);
                       
         return view('livewire.gremiolinhir',[
             'informacion' => $informacion,
