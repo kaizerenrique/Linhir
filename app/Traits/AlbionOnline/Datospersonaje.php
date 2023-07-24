@@ -41,7 +41,47 @@ trait Datospersonaje
             //report($e);	 
 	        return false;
         }
-	} 
+	}
+	
+	/**
+	* Esta función realiza una consulta a la Pagina del gameinfo.albiononline 
+    * para buscar información de los personajes segun su id. 
+	* 
+	* @param string   $identificador cadena de texto que contiene el id de albion 
+	* del personaje
+	*
+	* @return Retorna un array.
+	*/
+
+	public function personaje($identificador) 
+	{
+		try {
+            $url = 'https://gameinfo.albiononline.com/api/gameinfo/players/';
+			$response = Http::get($url.$identificador);
+
+			$respuesta = $response->getBody()->getContents();// accedemos a el contenido			
+
+            $respuesta = json_decode($respuesta); //convertimos en json	
+
+			return $respuesta;
+				
+
+        } catch (\Illuminate\Http\Client\ConnectionException $e) {
+            //report($e);	 
+	        return false;
+        }
+
+	}
+
+	/**
+	* Esta función realiza una consulta a la Pagina del gameinfo.albiononline 
+    * para buscar información de las kills realizadas por el personajes. 
+	* 
+	* @param string   $identificador cadena de texto que contiene el id de albion 
+	* del personaje
+	*
+	* @return Retorna un array.
+	*/	
     
 	public function kills($identificador)
 	{
@@ -61,6 +101,16 @@ trait Datospersonaje
         }
 
 	}
+
+	/**
+	* Esta función realiza una consulta a la Pagina del gameinfo.albiononline 
+    * para buscar información de las deaths sufridas por el personajes. 
+	* 
+	* @param string   $identificador cadena de texto que contiene el id de albion 
+	* del personaje
+	*
+	* @return Retorna un array.
+	*/
 
 	public function deaths($identificador)
 	{

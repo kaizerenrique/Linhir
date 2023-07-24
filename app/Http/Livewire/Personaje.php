@@ -4,39 +4,27 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use \App\Traits\AlbionOnline\Datospersonaje;
-use \App\Traits\Notificaciones\Discord;
-use Livewire\WithPagination;
 
 class Personaje extends Component
 {
-    use Datospersonaje;
-    use WithPagination;
-    use Discord;
-    
-
-    public $modalpersonaje = false; 
-    public $buscar;
-
-    protected $queryString = [
-        'buscar' => ['except' => '']
-    ];
+    use Datospersonaje;      
     
     public function render()
     {
-        $resultados = $this->consultar($this->buscar);
+        //buscar los personajes del usuario registrado
+        $perfiles = auth()->user()->personajes;  
+        
+        foreach ($perfiles as $perfil){
+			$Id_albion = $perfil->Id_albion;
+		}
 
-        $identificador = 'iPSdBmtiSoSAL1Sp2DX1YQ';
-        $resps = $this->deaths($identificador);
+        //$personaje = $this->personaje($Id_albion);
+
+        //dd($personaje);       
         
         
-        return view('livewire.personaje',[
-            'resultados' => $resultados,
-        ]);
+        return view('livewire.personaje');
         
     }
 
-    public function consultarpersonaje()
-    {
-        $this->modalpersonaje = true;
-    }
 }
