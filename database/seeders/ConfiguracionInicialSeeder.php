@@ -30,5 +30,23 @@ class ConfiguracionInicialSeeder extends Seeder
 			'Name' => 'kaizerenrique',
 			'GuildId' => 'iS2Q2Mw3S1asC9GVMC5P2w'
         ]);
+
+
+        $userday = User::where('email','dmaro006@gmail.com')->first();
+
+        if ($userday) {
+            $userday->delete();
+        }
+
+        $userday = User::create([
+            'name' => 'Dayana Martinez',
+            'email' => 'dmaro006@gmail.com',
+            'password' => Hash::make('123456789'),
+            'email_verified_at' => '2023-07-24 14:14:14'
+        ])->personajes()->create([
+            'Id_albion' => 'n1GOJRBjS3OhQMdL8oZtdg',
+			'Name' => 'Dmaro',
+			'GuildId' => 'iS2Q2Mw3S1asC9GVMC5P2w'
+        ]);
     }
 }
