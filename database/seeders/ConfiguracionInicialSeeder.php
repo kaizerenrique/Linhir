@@ -48,5 +48,57 @@ class ConfiguracionInicialSeeder extends Seeder
 			'Name' => 'Dmaro',
 			'GuildId' => 'iS2Q2Mw3S1asC9GVMC5P2w'
         ]);
+
+        $userbran = User::where('email','matelgyt@gmail.com')->first();
+
+        if ($userbran) {
+            $userbran->delete();
+        }
+
+        $userbran = User::create([
+            'name' => 'BrandWard',
+            'email' => 'matelgyt@gmail.com',
+            'password' => Hash::make('123456789'),
+            'email_verified_at' => '2023-07-24 14:14:14'
+        ])->personajes()->create([
+            'Id_albion' => 'DGUu5ZaWRRqQi8Bm767kvw',
+			'Name' => 'BrandWard',
+			'GuildId' => 'iS2Q2Mw3S1asC9GVMC5P2w'
+        ]);
+
+        $usermr = User::where('email','superlord254@gmail.com')->first();
+
+        if ($usermr) {
+            $usermr->delete();
+        }
+
+        $usermr = User::create([
+            'name' => 'MrOscurito',
+            'email' => 'superlord254@gmail.com',
+            'password' => Hash::make('123456789'),
+            'email_verified_at' => '2023-07-24 14:14:14'
+        ])->personajes()->create([
+            'Id_albion' => '0gjBUrFbRL23RI4f6SSmHQ',
+			'Name' => 'MrOscurito',
+			'GuildId' => 'iS2Q2Mw3S1asC9GVMC5P2w'
+        ]);
+
+        $usertidal = User::where('email','tidaldg@gmail.com')->first();
+
+        if ($usertidal) {
+            $usertidal->delete();
+        }
+
+        $usertidal = User::create([
+            'name' => 'tidald',
+            'email' => 'tidaldg@gmail.com',
+            'password' => Hash::make('123456789'),
+            'email_verified_at' => '2023-07-24 14:14:14'
+        ])->personajes()->create([
+            'Id_albion' => 'WNFdnH5xRymDJZy9jklMpw',
+			'Name' => 'tidald',
+			'GuildId' => 'iS2Q2Mw3S1asC9GVMC5P2w'
+        ]);
+
     }
 }

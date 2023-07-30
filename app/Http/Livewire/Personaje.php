@@ -18,12 +18,12 @@ class Personaje extends Component
 			$Id_albion = $perfil->Id_albion;
 		}
 
-        //$personaje = $this->personaje($Id_albion);
-
-        //dd($personaje);       
+        $personaje = $this->personaje($Id_albion);     
         
         
-        return view('livewire.personaje');
+        return view('livewire.personaje',[
+            'personaje' => $personaje,
+        ]);
         
     }
 
