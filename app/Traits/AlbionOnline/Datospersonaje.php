@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Personaje;
 use App\Models\Evento;
 use \App\Traits\Notificaciones\Discord;
+use App\Models\Configuracion;
 
 trait Datospersonaje
 {
@@ -134,41 +135,49 @@ trait Datospersonaje
 	public function eventos($respuesta , $identificador , $tipo)
 	{
 		$configuraciones = Personaje::where('Id_albion', $identificador)->get();
+		$notificacion = Configuracion::first();
 
-		foreach ($configuraciones as $config){
-			$idpersonaje = $config->id;
-		}
+		
 
-		$per = Personaje::find($config->id);
+		
+			
+			foreach ($configuraciones as $config){
+				$idpersonaje = $config->id;
+			}
+	
+			$per = Personaje::find($config->id);
 
-		foreach ($respuesta as $resp) {
-			if (Evento::where('EventId', $resp->EventId)->exists()) {				
-				
-			} else {
-
-				$inf = $per->eventos()->create([
-					'EventId' => $resp->EventId,
-					'BattleId' => $resp->BattleId,
-					'tipo' => $tipo
-				]);	
-
-				if ($resp->Victim->GuildName == 'Linhir') {						
-					$infonota = [
-						'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
-						'tip' => 'Muerte',
-						'imagen' => 'https://media.tenor.com/4dikOAK9gaIAAAAC/soldado-caido-funeral.gif'
-					];	
+			foreach ($respuesta as $resp) {
+				if (Evento::where('EventId', $resp->EventId)->exists()) {				
+					
 				} else {
-					$infonota = [
-						'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
-						'tip' => 'Victoria',
-						'imagen' => 'https://img.desmotivaciones.es/201305/klasdklsd.jpg'
-					];									
-				}
-
-				$notif = $this->notificacion($infonota);
-			}				
-		} 
+	
+					$inf = $per->eventos()->create([
+						'EventId' => $resp->EventId,
+						'BattleId' => $resp->BattleId,
+						'tipo' => $tipo
+					]);	
+					
+					if ($notificacion->notificar == 1) {
+						if ($resp->Victim->GuildName == 'Linhir') {						
+							$infonota = [
+								'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
+								'tip' => 'Muerte',
+								'imagen' => 'https://media.tenor.com/4dikOAK9gaIAAAAC/soldado-caido-funeral.gif'
+							];	
+						} else {
+							$infonota = [
+								'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
+								'tip' => 'Victoria',
+								'imagen' => 'https://img.desmotivaciones.es/201305/klasdklsd.jpg'
+							];									
+						}
+		
+						$notif = $this->notificacion($infonota);
+					}
+					
+				}				
+			} 	
 
 		return true;			
 	}
