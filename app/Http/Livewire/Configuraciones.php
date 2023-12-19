@@ -19,11 +19,19 @@ class Configuraciones extends Component
         ]);
     }
 
+    /**
+     * Esta funcion realiza una busqueda de todas las 
+     * muertes y kill del los jugadores del gremio
+     */
     public function buscarmuertesacecinatos()
     {
         $this->revisarlinhir();
     }
 
+    /**
+     * Esta funcion define el estado de los envios 
+     * de las notificaciones 
+     */
     public function notificacion($respuesta)
     {
         $notificacion = Configuracion::first();

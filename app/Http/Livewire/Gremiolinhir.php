@@ -13,6 +13,9 @@ class Gremiolinhir extends Component
     use WithPagination; 
 
     public $buscar;
+    public $confirmarEliminar = false;  
+    public $personaje;
+    public $identificador;
 
     protected $queryString = [
         'buscar' => ['except' => '']
@@ -55,5 +58,28 @@ class Gremiolinhir extends Component
     public function updatingBuscar()
     {
         $this->resetPage();
+    }
+
+    /**
+     * pregunta si quiere borrar un personaje 
+     * borrar integrante de gremio
+     */
+    public function consultaborrarintegrante(Personaje $personaje)
+    {
+        $this->confirmarEliminar = true;
+        $this->personaje = $personaje->Name;
+        $this->identificador = $personaje->id;
+        //dd($personaje);
+    }
+
+    /**
+     * borrar un personaje 
+     * 
+     */
+    public function eliminarPersonaje(Personaje $identificador)
+    {
+        $identificador->delete();
+        $this->confirmarEliminar = false;
+        session()->flash('message', 'El Personaje ha sido Eliminado correctamente.');
     }
 }

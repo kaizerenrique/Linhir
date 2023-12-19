@@ -162,6 +162,27 @@
                     
                 </div>
             </div>
+
+            <!-- mensaje -->
+            <div>
+                @if (session()->has('message'))
+                    <div class="max-w-lg mx-auto">
+                        <div class="flex bg-emerald-100 rounded-lg p-4 mb-4 text-sm text-emerald-700" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-5 w-5 mr-3"
+                                fill="none" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <div>
+                                <span class="font-medium">{{ session('message') }}</span>.
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
+            <!-- / mensaje -->
+            
             <!-- tabla -->
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
                 <div class="w-full overflow-x-auto">
@@ -220,7 +241,39 @@
                                                 {{number_format($integrante->LifetimeStatistics->Crafting->Total)}}    
                                             </th>
                                         @endif
-                                    @endforeach   
+                                    @endforeach  
+                                    <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                                        <div class="flex item-center justify-center">
+                                            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                                                wire:click="">
+                                                <a href="#">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                        stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                                                wire:click="">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                </svg>
+                                            </div>
+                                            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                                                wire:click="consultaborrarintegrante({{$miembro->id}})">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                </svg>
+                                            </div>
+                                        </div>                                                                                                                 
+                                    </th> 
                                 </tr>                            
                             @endforeach   
                             
@@ -234,7 +287,31 @@
                     </span>            
                 </div>
             </div>
-        <!-- \tabla -->       
+        <!-- \tabla -->   
+
+        <!-- Seccion que contiene el modal para eliminar -->
+        <x-confirmation-modal wire:model="confirmarEliminar">
+            <x-slot name="title">
+                Borrar personaje
+            </x-slot>
+    
+            <x-slot name="content">
+                ¿Está seguro de querer borrar el personaje de: {{ $personaje }}? 
+            </x-slot>
+    
+            <x-slot name="footer">
+                <x-secondary-button wire:click="$toggle('confirmarEliminar')" wire:loading.attr="disabled">
+                    Cancelar
+                </x-secondary-button>
+    
+                <x-danger-button class="ml-2" wire:click="eliminarPersonaje({{$identificador}})"
+                    wire:loading.attr="disabled">
+                    Borrar Escondite
+                </x-danger-button>
+            </x-slot>
+        </x-confirmation-modal>
+        <!-- / Seccion que contiene el modal para eliminar -->   
+
     </div>
     
 </div>
