@@ -108,7 +108,7 @@
                             <li>
                                 <span
                                     class="bg-black dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Outlands:
+                                    ZN:
                                     {{ number_format($personaje->LifetimeStatistics->Gathering->Fiber->Outlands) }}
                                 </span>
                             </li>
@@ -142,7 +142,7 @@
                             <li>
                                 <span
                                     class="bg-black dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Outlands:
+                                    ZN:
                                     {{ number_format($personaje->LifetimeStatistics->Gathering->Hide->Outlands) }}
                                 </span>
                             </li>
@@ -176,7 +176,7 @@
                             <li>
                                 <span
                                     class="bg-black dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Outlands:
+                                    ZN:
                                     {{ number_format($personaje->LifetimeStatistics->Gathering->Ore->Outlands) }}
                                 </span>
                             </li>
@@ -210,7 +210,7 @@
                             <li>
                                 <span
                                     class="bg-black dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Outlands:
+                                    ZN:
                                     {{ number_format($personaje->LifetimeStatistics->Gathering->Rock->Outlands) }}
                                 </span>
                             </li>
@@ -244,7 +244,7 @@
                             <li>
                                 <span
                                     class="bg-black dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Outlands:
+                                    ZN:
                                     {{ number_format($personaje->LifetimeStatistics->Gathering->Wood->Outlands) }}
                                 </span>
                             </li>
@@ -298,7 +298,7 @@
                             <li>
                                 <span
                                     class="bg-black dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Outlands:
+                                    ZN:
                                     {{ number_format($personaje->LifetimeStatistics->Crafting->Outlands) }}
                                 </span>
                             </li>
