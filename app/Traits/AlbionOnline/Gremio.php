@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Personaje;
 use \App\Traits\AlbionOnline\Datospersonaje;
+use App\Models\Configuracion;
 
 trait Gremio
 {
@@ -145,15 +146,14 @@ trait Gremio
 
 		foreach ($gremiolinhir as $player) {
 			$deaths = $this->deaths($player->Id_albion);
-			$kills = $this->kills($player->Id_albion);			
-
-			if (!empty($deaths)) {
-				$alfa = $this->eventos($deaths , $player->Id_albion, $tipo= 'deaths' );
-			}
-
-			if (!empty($kills)) {
-				$beta = $this->eventos($kills , $player->Id_albion, $tipo= 'kills' );
-			}
+			$kills = $this->kills($player->Id_albion);	
+			
+			if (!empty($deaths)) {				
+				$alfa = $this->eventos($deaths , $player->Id_albion, $tipo= 'deaths' );					
+			}	
+			if (!empty($kills)) {				
+				$beta = $this->eventos($kills , $player->Id_albion, $tipo= 'kills' );								
+			}		
 						
 		}
 

@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Configuracion;
 
 class ConfiguracionInicialSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class ConfiguracionInicialSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-    {
+    {      
         $useradmin = User::where('email','kayserenrique@gmail.com')->first();
 
         if ($useradmin) {
@@ -98,6 +99,10 @@ class ConfiguracionInicialSeeder extends Seeder
             'Id_albion' => 'WNFdnH5xRymDJZy9jklMpw',
 			'Name' => 'tidald',
 			'GuildId' => 'iS2Q2Mw3S1asC9GVMC5P2w'
+        ]);
+
+        $config = Configuracion::create([
+            'notificar' => false
         ]);
 
     }
