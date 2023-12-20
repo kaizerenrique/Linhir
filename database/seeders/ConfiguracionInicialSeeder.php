@@ -23,9 +23,9 @@ class ConfiguracionInicialSeeder extends Seeder
         
         //Permisos del Sistema
         //Permisos de la barra del menu
-        Permission::create(['name' => 'menuUsuarios'])->syncRoles([$admin]);
-        Permission::create(['name' => 'menuConfiguracion'])->syncRoles([$admin]); 
-
+        Permission::create(['name' => 'ver_detalles_jugador'])->syncRoles([$admin]);
+        Permission::create(['name' => 'editar_jugador'])->syncRoles([$admin]); 
+        Permission::create(['name' => 'eliminar_jugador'])->syncRoles([$admin]); 
 
         $useradmin = User::where('email','kayserenrique@gmail.com')->first();
 

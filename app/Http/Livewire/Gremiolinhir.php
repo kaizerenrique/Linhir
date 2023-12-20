@@ -42,8 +42,7 @@ class Gremiolinhir extends Component
         $miembros = Personaje::where('Name', 'like', '%'.$this->buscar . '%')  //buscar por nombre
                       ->orderBy('id') //ordenar de forma decendente
                       ->paginate($lim); //paginacion
-
-                      
+           
         return view('livewire.gremiolinhir',[
             'informacion' => $informacion,
             'miembros' => $miembros,
