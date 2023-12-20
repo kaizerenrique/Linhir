@@ -1,5 +1,5 @@
 <div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <div class="col-span-1 sm:col-span-2 md:col-span-1">
             <!-- Seccion de identificacion del Gremio -->
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg ">
@@ -67,17 +67,20 @@
                     <ul>
                         <li>
                             <h3 class="font-semibold text-base text-gray-800 dark:text-gray-200 leading-tight p-1">
-                                Fama total por Asesinatos: {{ number_format($personaje->KillFame) }}
+                                Fama total por Asesinatos: <br>
+                                {{ number_format($personaje->KillFame) }}
                             </h3>
                         </li>
                         <li>
                             <h3 class="font-semibold text-base text-gray-800 dark:text-gray-200 leading-tight p-1">
-                                Fama total por Muertes: {{ number_format($personaje->DeathFame) }}
+                                Fama total por Muertes: <br>
+                                {{ number_format($personaje->DeathFame) }}
                             </h3>
                         </li>
                         <li>
                             <h3 class="font-semibold text-base text-gray-800 dark:text-gray-200 leading-tight p-1">
-                                Relación: {{ $personaje->FameRatio }}
+                                Relación: <br>
+                                {{ $personaje->FameRatio }}
                             </h3>
                         </li>
                     </ul>
@@ -85,7 +88,7 @@
             </div>
         </div>
 
-        <div class="col-span-1 sm:col-span-2 md:col-span-2">
+        <div class="col-span-1 sm:col-span-2 md:col-span-3">
             <!-- targetas de informacion -->
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
@@ -95,28 +98,8 @@
                         <ul>
                             <li>
                                 <span
-                                    class="bg-green-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
+                                    class="bg-malachite dark:text-deep_fir text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
                                     Total: {{ number_format($personaje->LifetimeStatistics->Gathering->Fiber->Total) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-blue-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Royal: {{ number_format($personaje->LifetimeStatistics->Gathering->Fiber->Royal) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-black dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    ZN:
-                                    {{ number_format($personaje->LifetimeStatistics->Gathering->Fiber->Outlands) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-orange-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Avalon:
-                                    {{ number_format($personaje->LifetimeStatistics->Gathering->Fiber->Avalon) }}
                                 </span>
                             </li>
                         </ul>
@@ -129,30 +112,10 @@
                         <ul>
                             <li>
                                 <span
-                                    class="bg-green-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
+                                    class="bg-pink_salmon dark:text-maroon_oak text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
                                     Total: {{ number_format($personaje->LifetimeStatistics->Gathering->Hide->Total) }}
                                 </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-blue-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Royal: {{ number_format($personaje->LifetimeStatistics->Gathering->Hide->Royal) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-black dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    ZN:
-                                    {{ number_format($personaje->LifetimeStatistics->Gathering->Hide->Outlands) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-orange-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Avalon:
-                                    {{ number_format($personaje->LifetimeStatistics->Gathering->Hide->Avalon) }}
-                                </span>
-                            </li>
+                            </li>                            
                         </ul>
                     </div>
                 </div>
@@ -163,30 +126,10 @@
                         <ul>
                             <li>
                                 <span
-                                    class="bg-green-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
+                                    class="bg-turquoise dark:text-deep_teal text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
                                     Total: {{ number_format($personaje->LifetimeStatistics->Gathering->Ore->Total) }}
                                 </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-blue-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Royal: {{ number_format($personaje->LifetimeStatistics->Gathering->Ore->Royal) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-black dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    ZN:
-                                    {{ number_format($personaje->LifetimeStatistics->Gathering->Ore->Outlands) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-orange-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Avalon:
-                                    {{ number_format($personaje->LifetimeStatistics->Gathering->Ore->Avalon) }}
-                                </span>
-                            </li>
+                            </li>                            
                         </ul>
                     </div>
                 </div>
@@ -197,28 +140,8 @@
                         <ul>
                             <li>
                                 <span
-                                    class="bg-green-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
+                                    class="bg-lavender_pink dark:text-toledo text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
                                     Total: {{ number_format($personaje->LifetimeStatistics->Gathering->Rock->Total) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-blue-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Royal: {{ number_format($personaje->LifetimeStatistics->Gathering->Rock->Royal) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-black dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    ZN:
-                                    {{ number_format($personaje->LifetimeStatistics->Gathering->Rock->Outlands) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-orange-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Avalon:
-                                    {{ number_format($personaje->LifetimeStatistics->Gathering->Rock->Avalon) }}
                                 </span>
                             </li>
                         </ul>
@@ -231,28 +154,8 @@
                         <ul>
                             <li>
                                 <span
-                                    class="bg-green-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
+                                    class="bg-malachite dark:text-deep_fir text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
                                     Total: {{ number_format($personaje->LifetimeStatistics->Gathering->Wood->Total) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-blue-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Royal: {{ number_format($personaje->LifetimeStatistics->Gathering->Wood->Royal) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-black dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    ZN:
-                                    {{ number_format($personaje->LifetimeStatistics->Gathering->Wood->Outlands) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-orange-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Avalon:
-                                    {{ number_format($personaje->LifetimeStatistics->Gathering->Wood->Avalon) }}
                                 </span>
                             </li>
                         </ul>
@@ -263,7 +166,7 @@
                     <div class="ml-4">
                         <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight mb-2">Pescador</h2>
                         <span
-                            class="bg-green-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
+                            class="bg-pink_salmon dark:text-maroon_oak text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
                             Total: {{ number_format($personaje->LifetimeStatistics->FishingFame) }}
                         </span>
                     </div>
@@ -273,7 +176,7 @@
                     <div class="ml-4">
                         <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight mb-2">Agricultor</h2>
                         <span
-                            class="bg-green-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
+                            class="bg-turquoise dark:text-deep_teal text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
                             Total: {{ number_format($personaje->LifetimeStatistics->FarmingFame) }}
                         </span>
                     </div>
@@ -285,28 +188,8 @@
                         <ul>
                             <li>
                                 <span
-                                    class="bg-green-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
+                                    class="bg-lavender_pink dark:text-toledo text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
                                     Total: {{ number_format($personaje->LifetimeStatistics->Crafting->Total) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-blue-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Royal: {{ number_format($personaje->LifetimeStatistics->Crafting->Royal) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-black dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    ZN:
-                                    {{ number_format($personaje->LifetimeStatistics->Crafting->Outlands) }}
-                                </span>
-                            </li>
-                            <li>
-                                <span
-                                    class="bg-orange-700 dark:text-gray-200 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
-                                    Avalon:
-                                    {{ number_format($personaje->LifetimeStatistics->Crafting->Avalon) }}
                                 </span>
                             </li>
                         </ul>                        
