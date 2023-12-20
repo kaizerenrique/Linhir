@@ -11,13 +11,8 @@
                 <div class="flex justify-center w-full my-6">                    
                         <img src="{{asset('/plantilla/linhir_escudo.png')}}" class="h-36" />                    
                 </div>
-                <div class="mx-4 mb-4">                    
+                <div class="mx-4 mb-6">                    
                     <ul>
-                        <li>
-                            <h3 class="font-semibold text-base text-gray-800 dark:text-gray-200 leading-tight p-1">
-                                Alianza: {{$informacion->guild->AllianceName}}
-                            </h3>
-                        </li>
                         <li>
                             <h3 class="font-semibold text-base text-gray-800 dark:text-gray-200 leading-tight p-1">
                                 Fundador: <a href="#">{{$informacion->guild->FounderName}}</a>
@@ -37,7 +32,7 @@
             <!-- / Seccion de identificacion del Gremio -->
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg mt-4">
-                <div class="mx-4 mb-4">                    
+                <div class="mx-4 mb-8">                    
                     <ul>
                         <li>
                             <h3 class="font-semibold text-base text-gray-800 dark:text-gray-200 leading-tight p-1">
