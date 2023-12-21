@@ -100,10 +100,11 @@
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Manage Account') }}
                             </div>
-
-                            <x-dropdown-link href="{{ route('configuraciones') }}">
-                                {{ __('Configuraciones') }}
-                            </x-dropdown-link>
+                            @if (@Auth::user()->hasPermissionTo('menu_configuraciones'))
+                                <x-dropdown-link href="{{ route('configuraciones') }}">
+                                    {{ __('Configuraciones') }}
+                                </x-dropdown-link>                                
+                            @endif                            
 
                             <x-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
@@ -168,9 +169,11 @@
 
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
-                <x-responsive-nav-link href="{{ route('configuraciones') }}" :active="request()->routeIs('configuraciones')">
-                    {{ __('Configuraciones') }}
-                </x-responsive-nav-link>
+                @if (@Auth::user()->hasPermissionTo('menu_configuraciones'))
+                    <x-responsive-nav-link href="{{ route('configuraciones') }}" :active="request()->routeIs('configuraciones')">
+                        {{ __('Configuraciones') }}
+                    </x-responsive-nav-link>                    
+                @endif                
 
                 <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
