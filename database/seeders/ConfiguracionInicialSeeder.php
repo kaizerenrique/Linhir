@@ -19,13 +19,16 @@ class ConfiguracionInicialSeeder extends Seeder
     {
         //Roles del Sistema
         $admin = Role::create(['name' => 'Administrador']); //Administrador del Sistema
+        $oficial = Role::create(['name' => 'Oficial']); //Oficial del gremio
+        $suboficial = Role::create(['name' => 'Sub-Oficial']); //Oficial del gremio
         $user = Role::create(['name' => 'Usuario']); //Usuario Final
         
         //Permisos del Sistema
         //Permisos de la barra del menu
-        Permission::create(['name' => 'ver_detalles_jugador'])->syncRoles([$admin]);
-        Permission::create(['name' => 'editar_jugador'])->syncRoles([$admin]); 
-        Permission::create(['name' => 'eliminar_jugador'])->syncRoles([$admin]); 
+        Permission::create(['name' => 'ver_detalles_jugador'])->syncRoles([$admin , $oficial , $suboficial ]);
+        Permission::create(['name' => 'editar_jugador'])->syncRoles([$admin , $oficial ]); 
+        Permission::create(['name' => 'eliminar_jugador'])->syncRoles([$admin , $oficial]); 
+        Permission::create(['name' => 'menu_configuraciones'])->syncRoles([$admin]); 
 
         $useradmin = User::where('email','kayserenrique@gmail.com')->first();
 
@@ -73,7 +76,7 @@ class ConfiguracionInicialSeeder extends Seeder
             'email' => 'matelgyt@gmail.com',
             'password' => Hash::make('123456789'),
             'email_verified_at' => '2023-07-24 14:14:14'
-        ])->assignRole('Administrador')->personajes()->create([
+        ])->assignRole('Oficial')->personajes()->create([
             'Id_albion' => 'DGUu5ZaWRRqQi8Bm767kvw',
 			'Name' => 'BrandWard',
 			'GuildId' => 'iS2Q2Mw3S1asC9GVMC5P2w'
@@ -90,7 +93,7 @@ class ConfiguracionInicialSeeder extends Seeder
             'email' => 'superlord254@gmail.com',
             'password' => Hash::make('123456789'),
             'email_verified_at' => '2023-07-24 14:14:14'
-        ])->assignRole('Administrador')->personajes()->create([
+        ])->assignRole('Oficial')->personajes()->create([
             'Id_albion' => '0gjBUrFbRL23RI4f6SSmHQ',
 			'Name' => 'MrOscurito',
 			'GuildId' => 'iS2Q2Mw3S1asC9GVMC5P2w'
@@ -107,7 +110,7 @@ class ConfiguracionInicialSeeder extends Seeder
             'email' => 'tidaldg@gmail.com',
             'password' => Hash::make('123456789'),
             'email_verified_at' => '2023-07-24 14:14:14'
-        ])->assignRole('Administrador')->personajes()->create([
+        ])->assignRole('Oficial')->personajes()->create([
             'Id_albion' => 'WNFdnH5xRymDJZy9jklMpw',
 			'Name' => 'tidald',
 			'GuildId' => 'iS2Q2Mw3S1asC9GVMC5P2w'

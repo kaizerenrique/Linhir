@@ -137,10 +137,6 @@ trait Datospersonaje
 	{
 		$configuraciones = Personaje::where('Id_albion', $identificador)->get();
 		$notificacion = Configuracion::first();
-
-		
-
-		
 			
 			foreach ($configuraciones as $config){
 				$idpersonaje = $config->id;
@@ -159,7 +155,7 @@ trait Datospersonaje
 						'created_at' => Carbon::parse($resp->TimeStamp)->format('d-m-Y H:i:s')
 					]);	
 					
-					if ($notificacion->notificar == 1) {
+					if ($notificacion->notificar = true) {
 						if ($resp->Victim->GuildName == 'Linhir') {						
 							$infonota = [
 								'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
@@ -173,8 +169,8 @@ trait Datospersonaje
 								'imagen' => 'https://img.desmotivaciones.es/201305/klasdklsd.jpg'
 							];									
 						}
-		
-						$notif = $this->notificacion($infonota);
+						
+						$notif = $this->notificacion($infonota);			
 					}
 					
 				}				

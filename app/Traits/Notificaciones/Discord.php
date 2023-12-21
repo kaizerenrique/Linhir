@@ -17,7 +17,7 @@ trait Discord
         $linhir_url_bot = config('app.linhir_bot_discord');
         $registro = $infonota['tip'];
         $client = new Client();
-
+        
         $response = $client->post($linhir_url_bot,[
             'json' => [
                 "username" => "Bot de mensaje", 
