@@ -8,6 +8,7 @@ use App\Models\Personaje;
 use App\Models\Evento;
 use \App\Traits\Notificaciones\Discord;
 use App\Models\Configuracion;
+use Carbon\Carbon;
 
 trait Datospersonaje
 {
@@ -151,11 +152,11 @@ trait Datospersonaje
 				if (Evento::where('EventId', $resp->EventId)->exists()) {				
 					
 				} else {
-	
 					$inf = $per->eventos()->create([
 						'EventId' => $resp->EventId,
 						'BattleId' => $resp->BattleId,
-						'tipo' => $tipo
+						'tipo' => $tipo,
+						'created_at' => Carbon::parse($resp->TimeStamp)->format('d-m-Y H:i:s')
 					]);	
 					
 					if ($notificacion->notificar == 1) {
