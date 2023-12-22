@@ -6,6 +6,10 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use \App\Traits\AlbionOnline\Gremio;
 use App\Models\Personaje;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class Gremiolinhir extends Component
 {
@@ -16,10 +20,24 @@ class Gremiolinhir extends Component
     public $confirmarEliminar = false;  
     public $personaje;
     public $identificador;
+    public $agregarusuariomodal = false; 
+    public $email , $rol, $idpersonaje, $idper;
 
     protected $queryString = [
         'buscar' => ['except' => '']
     ];
+
+    protected function rules()
+    {
+        if ($modalAgregar = true) {
+            return [
+                'name' => 'required|unique:users',
+                'email' => 'required|email|unique:users',
+                'rol' => 'required',
+                'idper' => 'required',
+            ];
+        }        
+    }
 
     public function render()
     {
@@ -42,11 +60,14 @@ class Gremiolinhir extends Component
         $miembros = Personaje::where('Name', 'like', '%'.$this->buscar . '%')  //buscar por nombre
                       ->orderBy('id') //ordenar de forma decendente
                       ->paginate($lim); //paginacion
-           
+            
+        $roles = Role::all();
+
         return view('livewire.gremiolinhir',[
             'informacion' => $informacion,
             'miembros' => $miembros,
-            'integrantes' => $integrantes
+            'integrantes' => $integrantes,
+            'roles' => $roles,
         ]);
     }
 
@@ -68,7 +89,6 @@ class Gremiolinhir extends Component
         $this->confirmarEliminar = true;
         $this->personaje = $personaje->Name;
         $this->identificador = $personaje->id;
-        //dd($personaje);
     }
 
     /**
@@ -80,5 +100,43 @@ class Gremiolinhir extends Component
         $identificador->delete();
         $this->confirmarEliminar = false;
         session()->flash('message', 'El Personaje ha sido Eliminado correctamente.');
+    }
+
+    /**
+     * Esta funcion despliega el modal para agregar 
+     * un usuario y asociarlo al personaje
+     */
+    public function agregarusuario(Personaje $idpersonaje)
+    {
+        $this->reset(['email']);
+        
+        $this->name = $idpersonaje->Name;
+        $this->idper = $idpersonaje->id;                 
+        $this->agregarusuariomodal = true;
+    }
+
+    /**
+     * Esta funcion guarda los datos del usuario  
+     * y lo asocia al personaje
+     */
+    public function guardarusuario()
+    {
+        $this->validate();
+
+        //genera una contraseña de 8 caracteres de forma randon
+        $password = Str::random(8);
+
+        $usuario = User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => Hash::make($password),
+        ])->assignRole($this->rol);
+
+        $pj = Personaje::find($this->idper);
+        $pj->user_id = $usuario->id;
+        $pj->update();
+        
+        $this->agregarusuariomodal = false;
+        session()->flash('message', 'Se registro el usuario correctamente.');        
     }
 }
