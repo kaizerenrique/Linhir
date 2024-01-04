@@ -10,6 +10,8 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Mail\RegistroMailable;
+use Illuminate\Support\Facades\Mail;
 
 class Gremiolinhir extends Component
 {
@@ -134,9 +136,11 @@ class Gremiolinhir extends Component
 
         $pj = Personaje::find($this->idper);
         $pj->user_id = $usuario->id;
-        $pj->update();
+        $pj->update();        
         
         $this->agregarusuariomodal = false;
-        session()->flash('message', 'Se registro el usuario correctamente.');        
+        session()->flash('message', 'Se registro el usuario correctamente.');    
+        
+        Mail::to($this->email)->send(new RegistroMailable($this->name, $this->email, $password));
     }
 }
