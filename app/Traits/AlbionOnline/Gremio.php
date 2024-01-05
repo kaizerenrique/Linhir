@@ -5,7 +5,7 @@ namespace App\Traits\AlbionOnline;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Personaje;
-use \App\Traits\AlbionOnline\Datospersonaje;
+use App\Traits\AlbionOnline\Datospersonaje;
 use App\Models\Configuracion;
 
 trait Gremio

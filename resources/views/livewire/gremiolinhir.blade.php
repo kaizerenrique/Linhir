@@ -150,11 +150,19 @@
                 <div class="relative w-full max-w-full flex-grow flex-1">
                   <h3 class="font-semibold text-base text-gray-800 dark:text-gray-200 leading-tight">Listado de usuarios Registrados</h3>
                 </div>
-                <div class="flex flex-col items-center w-full max-w-xl">            
-                    <input type="search" wire:model="buscar" placeholder="Buscar" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none">
-                </div>
-                <div class="relative w-full max-w-full flex-grow flex-1 text-right">
+                <div class="flex flex-col items-center w-full max-w-xl">   
+                    <x-input class="block mt-1 w-100" type="search" wire:model="buscar" placeholder="Buscar" /> 
                     
+                </div>
+                <div class="relative w-full max-w-full flex-grow flex-1 text-right mt-1">
+                    <select wire:model.live="lim"
+                        class="w-25 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-blue-500 dark:focus:border-blue-500 focus:ring-blue-500 dark:focus:ring-blue-500 rounded-md shadow-sm">
+                        <option value="6" selected>6</option>
+                        <option value="12">12</option>
+                        <option value="24">24</option>
+                        <option value="36">36</option>
+                        <option value="48">48</option>
+                    </select>
                 </div>
             </div>
 

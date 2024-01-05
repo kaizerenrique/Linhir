@@ -170,11 +170,12 @@ trait Datospersonaje
 							];									
 						}
 						
-						$notif = $this->notificacion($infonota);			
+						$notif = $this->enviar($infonota);			
 					}
-					
 				}				
-			} 	
+			}
+			
+			
 
 		return true;			
 	}
