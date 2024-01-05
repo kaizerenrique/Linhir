@@ -28,12 +28,8 @@ trait Discord
                         "title" => $registro, 
                         "type" => "rich", 
                         "description" => $infonota['description'],  
-                        "url" => "https://linhir.xyz/",  
+                        "url" => "https://albiononline.com/killboard/kill/".$infonota['id_evento'],  
                         "timestamp" => $date, 
-
-                        "thumbnail" => [
-                            "url" => "https://www.korosenai.es/wp-content/uploads/2020/02/tanjiro-kamado.jpg"
-                        ],
 
                         "image" => [
                             "url" => $infonota['imagen']

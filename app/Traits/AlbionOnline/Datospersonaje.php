@@ -160,13 +160,15 @@ trait Datospersonaje
 							$infonota = [
 								'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
 								'tip' => 'Muerte',
-								'imagen' => 'https://media.tenor.com/4dikOAK9gaIAAAAC/soldado-caido-funeral.gif'
+								'imagen' => 'https://media.tenor.com/4dikOAK9gaIAAAAC/soldado-caido-funeral.gif',
+								'id_evento' => $resp->EventId
 							];	
 						} else {
 							$infonota = [
 								'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
 								'tip' => 'Victoria',
-								'imagen' => 'https://img.desmotivaciones.es/201305/klasdklsd.jpg'
+								'imagen' => 'https://img.desmotivaciones.es/201305/klasdklsd.jpg',
+								'id_evento' => $resp->EventId
 							];									
 						}
 						
