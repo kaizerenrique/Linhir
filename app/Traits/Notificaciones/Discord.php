@@ -31,14 +31,18 @@ trait Discord
                         "url" => "https://albiononline.com/killboard/kill/".$infonota['id_evento'],  
                         "timestamp" => $date, 
 
+                        "fields" => [
+                            [
+                                "name" => "Fecha y Hora",
+                                "value"=> $infonota['data']
+                            ],                              
+                            
+                        ], 
+
                         "image" => [
                             "url" => $infonota['imagen']
                         ],
- 
-                        "author" => [
-                            "name" => "Linhir_Bot",
-                            "url" => "https://linhir.xyz/" 
-                        ] 
+                        
                     ] 
                 ]
             ]

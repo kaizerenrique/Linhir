@@ -51,41 +51,11 @@
                                 @endif
                             </h3>
                         </li>
-                        <li>
-                            <h3 class="font-semibold text-base text-gray-800 dark:text-gray-200 leading-tight p-1">
-
-                            </h3>
-                        </li>
                     </ul>
                 </div>
             </div>
 
-            <!-- / Seccion de identificacion del Gremio -->
-
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg mt-4">
-                <div class="mx-4 mb-4 mt-4">
-                    <ul>
-                        <li>
-                            <h3 class="font-semibold text-base text-gray-800 dark:text-gray-200 leading-tight p-1">
-                                Fama total por Asesinatos: <br>
-                                {{ number_format($personaje->KillFame) }}
-                            </h3>
-                        </li>
-                        <li>
-                            <h3 class="font-semibold text-base text-gray-800 dark:text-gray-200 leading-tight p-1">
-                                Fama total por Muertes: <br>
-                                {{ number_format($personaje->DeathFame) }}
-                            </h3>
-                        </li>
-                        <li>
-                            <h3 class="font-semibold text-base text-gray-800 dark:text-gray-200 leading-tight p-1">
-                                Relación: <br>
-                                {{ $personaje->FameRatio }}
-                            </h3>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <!-- / Seccion de identificacion del Gremio -->            
         </div>
 
         <div class="col-span-1 sm:col-span-2 md:col-span-3">
@@ -198,6 +168,52 @@
 
             </div>
             <!-- / targetas de informacion -->
+
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-4">
+
+                <div class="flex items-start p-4 bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="ml-4">
+                        <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight mb-2">Fama total por Asesinatos:</h2>
+                        <ul>
+                            <li>
+                                <span
+                                    class="bg-malachite dark:text-deep_fir text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
+                                    Total: {{ number_format($personaje->KillFame) }}
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex items-start p-4 bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="ml-4">
+                        <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight mb-2">Fama total por Muertes:</h2>
+                        <ul>
+                            <li>
+                                <span
+                                    class="bg-malachite dark:text-deep_fir text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
+                                    Total: {{ number_format($personaje->DeathFame) }}
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex items-start p-4 bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="ml-4">
+                        <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight mb-2">Relación:</h2>
+                        <ul>
+                            <li>
+                                <span
+                                    class="bg-malachite dark:text-deep_fir text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">
+                                    Total: {{ $personaje->FameRatio }}
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </div>

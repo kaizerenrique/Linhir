@@ -148,11 +148,12 @@ trait Datospersonaje
 				if (Evento::where('EventId', $resp->EventId)->exists()) {				
 					
 				} else {
+					$data = Carbon::parse($resp->TimeStamp)->format('d-m-Y H:i:s');
 					$inf = $per->eventos()->create([
 						'EventId' => $resp->EventId,
 						'BattleId' => $resp->BattleId,
 						'tipo' => $tipo,
-						'created_at' => Carbon::parse($resp->TimeStamp)->format('d-m-Y H:i:s')
+						'created_at' => $data 
 					]);	
 					
 					if ($notificacion->notificar = true) {
@@ -161,14 +162,16 @@ trait Datospersonaje
 								'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
 								'tip' => 'Muerte',
 								'imagen' => 'https://media.tenor.com/4dikOAK9gaIAAAAC/soldado-caido-funeral.gif',
-								'id_evento' => $resp->EventId
+								'id_evento' => $resp->EventId,
+								'data' => $data 
 							];	
 						} else {
 							$infonota = [
 								'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
 								'tip' => 'Victoria',
 								'imagen' => 'https://img.desmotivaciones.es/201305/klasdklsd.jpg',
-								'id_evento' => $resp->EventId
+								'id_evento' => $resp->EventId,
+								'data' => $data 
 							];									
 						}
 						
