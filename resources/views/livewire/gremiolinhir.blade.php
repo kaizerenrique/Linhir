@@ -201,6 +201,7 @@
                                 <th class="px-4 py-3">Madera</th>
                                 <th class="px-4 py-3">Pesca</th>
                                 <th class="px-4 py-3">Elaboración</th>
+                                <th class="px-4 py-3">Agricultura</th>
                                 <th class="px-4 py-3">Acciones</th>
                             </tr>
                         </thead>
@@ -242,6 +243,10 @@
 
                                             <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
                                                 {{number_format($integrante->LifetimeStatistics->Crafting->Total)}}    
+                                            </th>
+
+                                            <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
+                                                {{number_format($integrante->LifetimeStatistics->FarmingFame)}}    
                                             </th>
                                         @endif
                                     @endforeach  
