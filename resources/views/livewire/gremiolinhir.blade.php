@@ -334,7 +334,7 @@
     
                 <x-danger-button class="ml-2" wire:click="eliminarPersonaje({{$identificador}})"
                     wire:loading.attr="disabled">
-                    Borrar Escondite
+                    Borrar Personaje
                 </x-danger-button>
             </x-slot>
         </x-confirmation-modal>
