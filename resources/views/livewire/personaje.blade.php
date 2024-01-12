@@ -1,5 +1,6 @@
 <div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+    @foreach ($personajes as $personaje)
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
         <div class="col-span-1 sm:col-span-2 md:col-span-1">
             <!-- Seccion de identificacion del Gremio -->
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg ">
@@ -217,5 +218,8 @@
         </div>
 
     </div>
+        
+    @endforeach
+    
 
 </div>

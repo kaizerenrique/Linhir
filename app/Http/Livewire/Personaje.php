@@ -15,14 +15,15 @@ class Personaje extends Component
         $perfiles = auth()->user()->personajes;  
         
         foreach ($perfiles as $perfil){
-			$Id_albion = $perfil->Id_albion;
+			$Id_albions[] = $perfil->Id_albion;
 		}
-
-        $personaje = $this->personaje($Id_albion);     
         
+        foreach ($Id_albions as $Id_albion) {
+            $personajes[] = $this->personaje($Id_albion);
+        }
         
         return view('livewire.personaje',[
-            'personaje' => $personaje,
+            'personajes' => $personajes,
         ]);
         
     }
