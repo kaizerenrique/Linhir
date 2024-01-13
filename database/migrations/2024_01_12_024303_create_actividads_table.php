@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('detalle');
+            $table->datetime('inicioactividad');
+            $table->datetime('finactividad');
             $table->timestamps();
         });
     }

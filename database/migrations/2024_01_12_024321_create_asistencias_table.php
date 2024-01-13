@@ -24,6 +24,8 @@ return new class extends Migration
                     ->constrained()  // <-- DEFINE LA RESTRICCION DE LLAVE FORANEA
                     ->onDelete('SET NULL')
                     ->onUpdate('cascade');
+                    
+            $table->string('detalle')->nullable();
             $table->timestamps();
         });
     }
