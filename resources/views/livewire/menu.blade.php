@@ -1,6 +1,6 @@
 <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-        <a class="flex items-center" href="{{ route('dashboard') }}">
+        <a class="flex items-center" href="{{ route('welcome') }}">
             <x-application-mark class="block mr-3 h-6 sm:h-9" />
             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white ml-2">Linhir</span>
         </a>
