@@ -274,9 +274,16 @@
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                                 d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                                         </svg>
-                                                    </div>                                                    
-                                                @else
-                                                    <!-- Editar -->
+                                                    </div> 
+                                                    <!-- Alter -->
+                                                    <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                                                        wire:click="alterpersonaje({{$miembro->id}})">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                            stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                                                        </svg>
+                                                    </div>
+                                                @else 
                                                     <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
                                                         wire:click="">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -285,7 +292,7 @@
                                                             d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
                                                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                                         </svg>
-                                                    </div> 
+                                                    </div>
                                                     
                                                 @endif
                                                 
@@ -377,6 +384,44 @@
                 </div>
                 <div class="px-4 py-2 m-2">
                     <x-danger-button class="ml-2" wire:click="$toggle('agregarusuariomodal')" wire:loading.attr="disabled">
+                        Cancelar
+                    </x-danger-button>
+                </div>
+            </x-slot>
+        </x-dialog-modall>
+
+        <x-dialog-modal wire:model="agregaraltermodal">
+            <x-slot name="title">
+                Crear Usuario
+            </x-slot>
+    
+            <x-slot name="content">
+                <div class="mt-4">
+                    <x-label for="name" value="{{ __('Nombre del Personaje') }}" />
+                    <x-input class="block mt-1 w-full" type="text" wire:model.defer="name" disabled />    
+                </div>
+                <div class="mt-4">
+                    <x-label for="name" value="{{ __('Usuario') }}" />
+                    <select wire:model.defer="usuario"
+                        class="w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                        <option value="" selected>Seleccionar</option>
+                        @foreach ($usuarios as $usuario)                            
+                            <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>                            
+                        @endforeach  
+                    </select>
+                </div>
+                <x-input id="idper" type="hidden" class="mt-1 block w-full" wire:model.defer="idper"/>
+
+            </x-slot>
+    
+            <x-slot name="footer">
+                <div class="px-4 py-2 m-2">
+                    <x-secondary-button wire:click="asociaralter()" wire:loading.attr="disabled">
+                        Agregar
+                    </x-secondary-button>
+                </div>
+                <div class="px-4 py-2 m-2">
+                    <x-danger-button class="ml-2" wire:click="$toggle('agregaraltermodal')" wire:loading.attr="disabled">
                         Cancelar
                     </x-danger-button>
                 </div>

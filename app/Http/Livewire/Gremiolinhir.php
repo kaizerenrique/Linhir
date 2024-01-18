@@ -23,7 +23,8 @@ class Gremiolinhir extends Component
     public $personaje;
     public $identificador, $lim;
     public $agregarusuariomodal = false; 
-    public $email , $rol, $idpersonaje, $idper;
+    public $email , $rol, $idpersonaje, $idper, $usuario;
+    public $agregaraltermodal = false; 
 
     protected $queryString = [
         'buscar' => ['except' => '']
@@ -65,12 +66,14 @@ class Gremiolinhir extends Component
                       ->paginate($this->lim); //paginacion
             
         $roles = Role::all();
+        $usuarios = User::all();
 
         return view('livewire.gremiolinhir',[
             'informacion' => $informacion,
             'miembros' => $miembros,
             'integrantes' => $integrantes,
             'roles' => $roles,
+            'usuarios' => $usuarios
         ]);
     }
 
@@ -143,5 +146,28 @@ class Gremiolinhir extends Component
         session()->flash('message', 'Se registro el usuario correctamente.');    
         
         Mail::to($this->email)->send(new RegistroMailable($this->name, $this->email, $password));
+    }
+
+    public function alterpersonaje(Personaje $idpersonaje)
+    {
+        $this->name = $idpersonaje->Name;
+        $this->idper = $idpersonaje->id;  
+        $this->agregaraltermodal = true;
+    }
+
+    public function asociaralter()
+    {
+        $this->validate([ 
+            'name' => 'required',
+            'usuario' => 'required',
+            'idper' => 'required',
+        ]);
+
+        $pj = Personaje::find($this->idper);
+        $pj->user_id = $this->usuario;
+        $pj->update();
+
+        $this->agregaraltermodal = false;
+        session()->flash('message', 'EL personaje alter se ha asociado correctamente.');  
     }
 }
