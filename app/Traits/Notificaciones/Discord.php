@@ -54,4 +54,42 @@ trait Discord
 
     }
 
+    public function status_server($status)
+    {
+        $date = Carbon::now()->format('Y-m-d H:i'); //fecha
+        $linhir_url_bot = config('app.linhir_bot_discord');     
+        $client = new Client();
+
+        $escudo = asset('/plantilla/linhir_escudo_400x500.png');
+        
+        $response = $client->post($linhir_url_bot,[
+            'json' => [ 
+                "username" => "Linhir_Bot",
+                "avatar_url" => $escudo,
+
+                "embeds" => [ 
+                    [ 
+                        "title" => "Estado del servidor de Albion" , 
+                        "type" => "rich", 
+                        "description" => $status->status,
+                        "color"=> "1127128",
+                        "fields" => [
+                            [
+                                "name" => "UTC",
+                                "value"=> $date
+                            ],                              
+                            
+                        ], 
+                        
+                    ] 
+                ]
+            ]
+        ]);
+
+        $alfa = $response->getBody();
+        
+        return $alfa;
+
+    }
+
 } 

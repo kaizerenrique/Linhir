@@ -71,4 +71,30 @@
     </div>
     <x-section-border />
     <!-- /Seccion Notificaciones de discord -->
+
+    <!-- Seccion Estado del servidor -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="">
+            <div class="w-full mt-4">
+                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    Estado del servidor de Albion
+                </h2>
+            </div>
+        </div>
+
+        <div class="dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-4">
+            <div class="relative flex gap-x-3">                
+                <div class="text-sm leading-6">
+                  <label for="comments" class="font-medium text-gray-200">Estado del servidor: </label> 
+                  @if ($status->status == 'online')
+                    <span class="text-green-500 font-semibold">Activo</span>
+                  @else
+                    <span class="text-red-500 font-semibold">Apagado</span>  
+                  @endif     
+                </div>
+            </div>            
+        </div>        
+    </div>
+    <x-section-border />
+    <!-- /Seccion Estado del servidor -->
 </div>

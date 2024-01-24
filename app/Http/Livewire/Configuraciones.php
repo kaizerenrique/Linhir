@@ -4,18 +4,24 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use \App\Traits\AlbionOnline\Gremio;
+use \App\Traits\AlbionOnline\Estadodelservidor;
 use App\Models\Configuracion;
 
 class Configuraciones extends Component
 {
     use Gremio;
+    use Estadodelservidor;
 
     public function render()
     {
         $config = Configuracion::first();
 
+        $status = $this->consultar_estado_del_servidor();
+        
+        
         return view('livewire.configuraciones',[
-            'config' => $config
+            'config' => $config,
+            'status' => $status
         ]);
     }
 
