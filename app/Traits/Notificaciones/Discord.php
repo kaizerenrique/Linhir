@@ -60,7 +60,7 @@ trait Discord
         $linhir_url_bot = config('app.linhir_bot_discord');     
         $client = new Client();
 
-        $escudo = asset('/plantilla/linhir_escudo_400x500.png');
+        $escudo = asset('/plantilla/linhir_escudo_190.png');
         
         $response = $client->post($linhir_url_bot,[
             'json' => [ 
