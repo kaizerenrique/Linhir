@@ -14,7 +14,7 @@ trait Estadodelservidor
     public function consultar_estado_del_servidor()
     {
         try {
-            $url = 'https://serverstatus-sgp.albiononline.com/';
+            $url = 'https://serverstatus.albiononline.com/';
             $response = Http::get($url);
             $respuesta = $response->getBody()->getContents();// accedemos a el contenido	
             $respuesta = json_decode($respuesta);
