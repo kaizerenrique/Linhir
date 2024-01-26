@@ -14,14 +14,15 @@ trait Discord
     public function enviar($infonota)
     {
         $date = Carbon::now(); //fecha
-        $linhir_url_bot = config('app.linhir_bot_discord');   
+        $linhir_url_bot = config('app.linhir_bot_kills');   
         $registro = $infonota['tip'];     
         $client = new Client();
+        $escudo = asset('/plantilla/linhir_escudo_180.png');
         
         $response = $client->post($linhir_url_bot,[
             'json' => [ 
-                "username" => "Linhir_Bot",
-                "avatar_url" => "https://www.korosenai.es/wp-content/uploads/2020/02/tanjiro-kamado.jpg",
+                "username" => "Linhir_Bot_Combates",
+                "avatar_url" => $escudo,
 
                 "embeds" => [ 
                     [ 
@@ -35,14 +36,11 @@ trait Discord
                             [
                                 "name" => "Fecha y Hora",
                                 "value"=> $infonota['data']
-                            ],                              
-                            
-                        ], 
-
+                            ],  
+                        ],
                         "image" => [
                             "url" => $infonota['imagen']
-                        ],
-                        
+                        ],                        
                     ] 
                 ]
             ]

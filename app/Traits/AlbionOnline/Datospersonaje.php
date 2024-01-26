@@ -137,6 +137,7 @@ trait Datospersonaje
 	{
 		$configuraciones = Personaje::where('Id_albion', $identificador)->get();
 		$notificacion = Configuracion::first();
+		$hoy = Carbon::today();
 			
 			foreach ($configuraciones as $config){
 				$idpersonaje = $config->id;
@@ -149,21 +150,27 @@ trait Datospersonaje
 					
 				} else {
 					$data = Carbon::parse($resp->TimeStamp)->format('d-m-Y H:i:s');
-					$inf = $per->eventos()->create([
-						'EventId' => $resp->EventId,
-						'BattleId' => $resp->BattleId,
-						'tipo' => $tipo,
-						'created_at' => $data 
-					]);	
+
 					
-					if ($notificacion->notificar = true) {
-						if ($resp->Victim->GuildName == 'Linhir') {						
+					$diferencia = $hoy->diffInDays($data);
+					
+					if ($diferencia < 1) {
+						$inf = $per->eventos()->create([
+							'EventId' => $resp->EventId,
+							'BattleId' => $resp->BattleId,
+							'tipo' => $tipo,
+							'created_at' => $data 
+						]);	
+					}
+					
+					if ($notificacion->notificar == true) {
+						if ($resp->Victim->GuildName == 'Linhir') {				
 							$infonota = [
 								'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
-								'tip' => 'Muerte',
+								'tip' => 'Derrota',
 								'imagen' => 'https://media.tenor.com/4dikOAK9gaIAAAAC/soldado-caido-funeral.gif',
 								'id_evento' => $resp->EventId,
-								'data' => $data 
+								'data' => $data, 
 							];	
 						} else {
 							$infonota = [
@@ -171,7 +178,7 @@ trait Datospersonaje
 								'tip' => 'Victoria',
 								'imagen' => 'https://img.desmotivaciones.es/201305/klasdklsd.jpg',
 								'id_evento' => $resp->EventId,
-								'data' => $data 
+								'data' => $data,
 							];									
 						}
 						
