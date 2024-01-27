@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('consulta:servidorstatus')->everyMinute();
+
+        $schedule->command('consulta:revisareventos')->everyThreeMinutes();
     }
 
     /**

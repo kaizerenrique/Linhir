@@ -161,29 +161,30 @@ trait Datospersonaje
 							'tipo' => $tipo,
 							'created_at' => $data 
 						]);	
+
+						if ($notificacion->notificar == true) {
+							if ($resp->Victim->GuildName == 'Linhir') {				
+								$infonota = [
+									'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
+									'tip' => 'Derrota',
+									'imagen' => 'https://media.tenor.com/4dikOAK9gaIAAAAC/soldado-caido-funeral.gif',
+									'id_evento' => $resp->EventId,
+									'data' => $data, 
+								];	
+							} else {
+								$infonota = [
+									'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
+									'tip' => 'Victoria',
+									'imagen' => 'https://img.desmotivaciones.es/201305/klasdklsd.jpg',
+									'id_evento' => $resp->EventId,
+									'data' => $data,
+								];									
+							}
+							
+							$notif = $this->enviar($infonota);			
+						}
 					}
 					
-					if ($notificacion->notificar == true) {
-						if ($resp->Victim->GuildName == 'Linhir') {				
-							$infonota = [
-								'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
-								'tip' => 'Derrota',
-								'imagen' => 'https://media.tenor.com/4dikOAK9gaIAAAAC/soldado-caido-funeral.gif',
-								'id_evento' => $resp->EventId,
-								'data' => $data, 
-							];	
-						} else {
-							$infonota = [
-								'description' => '**'.$resp->Victim->Name.'**'.' a muerto a manos de '.'**'.$resp->Killer->Name.'**',
-								'tip' => 'Victoria',
-								'imagen' => 'https://img.desmotivaciones.es/201305/klasdklsd.jpg',
-								'id_evento' => $resp->EventId,
-								'data' => $data,
-							];									
-						}
-						
-						$notif = $this->enviar($infonota);			
-					}
 				}				
 			}
 			
