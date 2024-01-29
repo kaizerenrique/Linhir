@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('detalle');
             $table->datetime('inicioactividad');
             $table->datetime('finactividad');
+            $table->boolean('estado')->default(true)->nullable();
+            $table->string('imagen_referencia', 2048)->nullable();
             $table->timestamps();
         });
     }
