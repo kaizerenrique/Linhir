@@ -7,11 +7,13 @@ use Livewire\WithPagination;
 use App\Models\Actividad;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\Operaciones\Operaciones;
 
 class Actividades extends Component
 {
     use WithPagination;
     use WithFileUploads;
+    use Operaciones;
 
     public $buscar,$activo, $lim;
     public $imagen;
@@ -49,13 +51,17 @@ class Actividades extends Component
         $actividades = Actividad::where('titulo', 'like', '%'.$this->buscar . '%')  //buscar por nombre
                         ->when($this->activo, function($query)
                         {
-                            //consulta solo las categorias con estatus activo
+                            //consulta solo las actividades con estatus activo
                             return $query->activo(); 
                         })
                       ->orderBy('id') //ordenar de forma decendente
                       ->paginate($this->lim); //paginacion
         
         $num = Actividad::count();
+
+        $resp = $this->elegiractividad();
+
+        //dd($resp);
         
         return view('livewire.comp.actividades',[
             'actividades' => $actividades,
@@ -103,8 +109,7 @@ class Actividades extends Component
      */
     public function guardaractividad()
     {
-        $res = $this->validate();
-        //dd($res);
+        $res = $this->validate();        
 
         //almacenar imagen
         if (!empty($this->imagen)){
@@ -128,6 +133,10 @@ class Actividades extends Component
         session()->flash('message', 'La actividad se ha guardado correctamente.');        
     }
 
+    /**
+     * Consulta mediante un modal si desea eliminar 
+     * una actividad
+     */
     public function consultaborrar(Actividad $registro)
     {
         $this->nombre = $registro->titulo;
@@ -135,6 +144,10 @@ class Actividades extends Component
         $this->confirmarEliminar = true;
     }
 
+    /**
+     * Elimina la actividad de la base de datos asi como
+     * la imagen de la carpeta correspondiente 
+     */
     public function borraractividad(Actividad $identificador)
     {
         if(!empty($identificador->imagen_referencia)){
