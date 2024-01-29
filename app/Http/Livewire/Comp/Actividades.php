@@ -120,7 +120,7 @@ class Actividades extends Component
             'inicioactividad' => $this->inicioactividad,
             'finactividad' => $this->finactividad,
             'estado'=> $this->estado,
-            'imagen_referencia' => $this->imagen
+            'imagen_referencia' => $imagen_ruta
         ]);
 
         $this->nuevaactividad = false;
@@ -137,6 +137,10 @@ class Actividades extends Component
 
     public function borraractividad(Actividad $identificador)
     {
+        if(!empty($identificador->imagen_referencia)){
+            $url = str_replace('storage','public',$identificador->imagen_referencia);
+            Storage::delete($url);
+        } 
         $identificador->delete();
         $this->confirmarEliminar = false;
         session()->flash('message', 'La Actividad ha sido Eliminado correctamente.');
