@@ -16,7 +16,9 @@ class Actividades extends Component
     public $buscar,$activo, $lim;
     public $imagen;
     public $nuevaactividad = false;
+    public $confirmarEliminar = false;
     public $titulo, $detalle, $inicioactividad, $finactividad, $estado;
+    public $nombre, $identificador;
 
     protected function rules()
     {
@@ -124,5 +126,19 @@ class Actividades extends Component
         $this->nuevaactividad = false;
 
         session()->flash('message', 'La actividad se ha guardado correctamente.');        
+    }
+
+    public function consultaborrar(Actividad $registro)
+    {
+        $this->nombre = $registro->titulo;
+        $this->identificador = $registro->id;
+        $this->confirmarEliminar = true;
+    }
+
+    public function borraractividad(Actividad $identificador)
+    {
+        $identificador->delete();
+        $this->confirmarEliminar = false;
+        session()->flash('message', 'La Actividad ha sido Eliminado correctamente.');
     }
 }
