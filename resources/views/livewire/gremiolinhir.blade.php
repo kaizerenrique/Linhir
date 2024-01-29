@@ -322,7 +322,7 @@
                     </span>            
                 </div>
             </div>
-        <!-- \tabla -->   
+            <!-- \tabla -->   
 
         <!-- Seccion que contiene el modal para eliminar -->
         <x-confirmation-modal wire:model="confirmarEliminar">

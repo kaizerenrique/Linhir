@@ -12,11 +12,18 @@ class Actividad extends Model
     protected $fillable = [
         'titulo',
         'detalle',
-        'created_at'
+        'inicioactividad',
+        'finactividad',
+        'estado',
+        'imagen_referencia'
     ];
 
-    public function asistentes()
+    /**
+    * Realiza una busqueda de los elementos activos
+    */
+
+    public function scopeActivo( $query)
     {
-        return $this->hasMany(Asistencia::class);
+         return $query->where('estado', 1);
     }
 }

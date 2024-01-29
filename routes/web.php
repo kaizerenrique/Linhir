@@ -34,4 +34,8 @@ Route::middleware([
     Route::get('/configuraciones', function () {
         return view('componentes/configuraciones');
     })->name('configuraciones');
+
+    Route::get('/actividades', function () {
+        return view('componentes/actividades');
+    })->name('actividades');
 });

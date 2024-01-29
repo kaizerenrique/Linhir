@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('detalle');
-            $table->datetime('inicioactividad');
-            $table->datetime('finactividad');
-            $table->boolean('estado')->default(true)->nullable();
+            $table->time('inicioactividad');
+            $table->time('finactividad');
+            $table->boolean('estado')->nullable();
             $table->string('imagen_referencia', 2048)->nullable();
             $table->timestamps();
         });
