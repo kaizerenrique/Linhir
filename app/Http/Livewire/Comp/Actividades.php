@@ -7,6 +7,7 @@ use Livewire\WithPagination;
 use App\Models\Actividad;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Historico;
 
 class Actividades extends Component
 {
@@ -56,11 +57,14 @@ class Actividades extends Component
                       ->orderBy('id') //ordenar de forma decendente
                       ->paginate($this->lim); //paginacion
         
-        $num = Actividad::count();    
+        $num = Actividad::count();
+        $regis = Historico::count(); 
+        $regis = $regis - 1;    
         
         return view('livewire.comp.actividades',[
             'actividades' => $actividades,
-            'num' => $num
+            'num' => $num,
+            'regis' => $regis
         ]);
     }
 
