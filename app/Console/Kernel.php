@@ -13,9 +13,14 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+        //consultar el estado del servidor de albion
         $schedule->command('consulta:servidorstatus')->everyMinute();
 
+        //revisa las muertes y las kills de los integrantes de linhir
         $schedule->command('consulta:revisareventos')->everyThreeMinutes();
+
+        //envia una notificacion diaria con una actividad definida
+        $schedule->command('actividad:actividaldeldia')->dailyAt('18:09');
     }
 
     /**

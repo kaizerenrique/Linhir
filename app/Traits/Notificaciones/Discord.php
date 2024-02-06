@@ -96,8 +96,6 @@ trait Discord
     {
         $actividad = $this->elegiractividad();
 
-        //return $actividad;
-
         $linhir_url_bot = config('app.linhir_bot_activ');     
         $client = new Client();
 
