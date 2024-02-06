@@ -20,7 +20,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('consulta:revisareventos')->everyThreeMinutes();
 
         //envia una notificacion diaria con una actividad definida
-        $schedule->command('actividad:actividaldeldia')->dailyAt('20:28');
+        $schedule->command('actividad:actividaldeldia')->dailyAt('12:00');
     }
 
     /**
