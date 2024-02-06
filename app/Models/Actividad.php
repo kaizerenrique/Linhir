@@ -26,4 +26,9 @@ class Actividad extends Model
     {
          return $query->where('estado', 1);
     }
+
+    public function historicos()
+    {
+        return $this->hasMany(Historico::class);
+    }
 }

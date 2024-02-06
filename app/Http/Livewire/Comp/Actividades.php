@@ -7,13 +7,12 @@ use Livewire\WithPagination;
 use App\Models\Actividad;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
-use App\Traits\Operaciones\Operaciones;
 
 class Actividades extends Component
 {
     use WithPagination;
     use WithFileUploads;
-    use Operaciones;
+    
 
     public $buscar,$activo, $lim;
     public $imagen;
@@ -27,7 +26,7 @@ class Actividades extends Component
         if ($nuevaactividad = true) {
             return [
                 'titulo' => 'required|string|min:4|max:30',
-                'detalle' => 'required|string|min:4|max:30',
+                'detalle' => 'required|string|min:4|max:120',
                 'inicioactividad' => 'required',
                 'finactividad' => 'required',                
                 'imagen' => 'nullable|image|max:2048',
@@ -57,11 +56,7 @@ class Actividades extends Component
                       ->orderBy('id') //ordenar de forma decendente
                       ->paginate($this->lim); //paginacion
         
-        $num = Actividad::count();
-
-        $resp = $this->elegiractividad();
-
-        //dd($resp);
+        $num = Actividad::count();    
         
         return view('livewire.comp.actividades',[
             'actividades' => $actividades,

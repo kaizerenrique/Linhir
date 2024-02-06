@@ -194,12 +194,14 @@
 
             <div class="mt-4">
                 <x-label for="name" value="{{ __('Nombre de la Actividad') }}" />
-                <x-input class="block mt-1 w-full" type="text" wire:model.defer="titulo" required />    
+                <x-input class="block mt-1 w-full" type="text" wire:model.defer="titulo" required /> 
+                <x-input-error for="titulo" class="mt-2" />   
             </div>
 
             <div class="mt-4">
                 <x-label for="name" value="{{ __('Descripción') }}" />
                 <x-input class="block mt-1 w-full" type="text" wire:model.defer="detalle" required />
+                <x-input-error for="detalle" class="mt-2" />   
             </div>
 
             <div class="mt-4 grid grid-cols-3 sm:grid-cols-3">

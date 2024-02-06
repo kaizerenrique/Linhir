@@ -19,7 +19,7 @@ return new class extends Migration
                     ->onDelete('SET NULL')
                     ->onUpdate('cascade');
             
-            $table->foreignId('actividad_id') // UNSIGNED BIG INT
+            $table->foreignId('historico_id') // UNSIGNED BIG INT
                     ->nullable() // <-- IMPORTANTE: LA COLUMNA DEBE ACEPTAR NULL COMO VALOR VALIDO
                     ->constrained()  // <-- DEFINE LA RESTRICCION DE LLAVE FORANEA
                     ->onDelete('SET NULL')

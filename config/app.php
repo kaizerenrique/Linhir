@@ -155,6 +155,7 @@ return [
     'linhir_gremio_id' => env('LINHIR_GREMIO_ID'),
     'linhir_bot_discord' => env('LINHIR_BOT_DISCORD'),
     'linhir_bot_kills' => env('LINHIR_BOT_KILLS'),
+    'linhir_bot_activ' => env('LINHIR_BOT_ACTIV'),
 
     /*
     |--------------------------------------------------------------------------
