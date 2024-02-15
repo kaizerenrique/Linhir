@@ -154,7 +154,7 @@
                     <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Un poco de nuestra historia.</h2>
                     <p class="mb-4">El gremio Linhir a sido fundado el 25 de septiembre del 2022, por los jugadores Kaizerenrique, Dmaro y ElPrincipedelSur , ubicado en la isla homónima, en la Ciudad de Fort Sterling capital del reino de Blyn Brae. El gremio ha hecho jura de bandera y tomado armas por la ciudad de Fort Sterling en la guerra de facciones, y sus principales actividades son el farmeo de recursos, el combate PVE y otras actividades relacionadas.</p>
                     <p class="mb-4">El nombre Linhir fue sugerido por Dmaro y tiene sus orígenes en una ciudad del reino de Gondor que se encuentra casi en la frontera con la también provincia gondoriana de Belfalas. Linhir está situada en la confluencia de los ríos Serni y Gilrain. Una traducción probable para Linhir es “Rio de Musica” y tiene su primera aparición en la Guerra del Anillo.</p>
-                    <p>El 11 de Agosto del 2023 Linhir logró instalar exitosamente un HQ en caminos de avalon iniciando así su expedición a tierras lejanas, un hito para un gremio que se especializa en recolectar y no en el combate. </p>
+                    <p>El 11 de Agosto del 2023 Linhir logró instalar exitosamente un HQ en caminos de avalon iniciando así su expedición a tierras lejanas, un hito para un gremio que se especializa en recolectar y no en el combate. Y este no sería el último hito ya que entre los días 11 y 12 del mes de febrero del 2024 Linhir logró instalar un HO en zona negra, teniendo así dos escondites uno en avalon y uno en tierras lejanas.  </p>
                 </div>
                 <div class="grid grid-cols-2 gap-4 mt-8">
                     <img class="w-full rounded-lg" src="{{ asset('/plantilla/demaro_orbe.png') }}" alt="office content 1">
@@ -168,7 +168,7 @@
                 <div class="mx-auto max-w-screen-sm text-center">
                     <h2 class="mb-4 text-4xl font-extrabold leading-tight text-gray-900 dark:text-white">Contacta con Nosotros</h2>
                     <p class="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-lg">Es siguiente botón te llevará a nuestro servidor de discord</p>
-                    <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                    <a href="https://discord.gg/nhtvh3vSqj" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                         Discord
                     </a>
                 </div>
