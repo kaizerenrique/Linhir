@@ -16,12 +16,13 @@ class Gremiocomponente extends Component
     use WithFileUploads;
 
     public $modalAgregar = false;
-    public $buscar;  
+    public $buscar,$activo, $lim;  
     public $modalGremio = false;
     public $id_gremio, $nombre_gremio, $alianza_gremio, $miembros_gremio, $imagen, $estado;
 
     protected $queryString = [
-        'buscar' => ['except' => '']
+        'buscar' => ['except' => ''],
+        'activo' => ['except' =>  false]
     ];
 
     protected function rules()
@@ -40,10 +41,47 @@ class Gremiocomponente extends Component
     public function render()
     {
         $gremios = $this->consultar($this->buscar);
+
+        if ($this->lim == null) {
+            $this->lim = 6;
+        }  
+
+        $guilds = Guild::where('nombre_gremio', 'like', '%'.$this->buscar . '%')  //buscar por nombre
+                        ->when($this->activo, function($query)
+                        {
+                            //consulta solo las actividades con estatus activo
+                            return $query->activo(); 
+                        })
+                      ->orderBy('id') //ordenar de forma decendente
+                      ->paginate($this->lim); //paginacion
+
+        $num = Guild::count();
+        $acti = Guild::activo()->count();
         
         return view('livewire.gremiocomponente',[
             'gremios' => $gremios,
+            'guilds' => $guilds,
+            'num' => $num,
+            'acti' => $acti
         ]);
+    }
+
+    /**
+     * Corrige la numeracion de la tabla al realizar 
+     * una busqueda
+     */
+    public function updatingBuscar()
+    {
+        $this->resetPage();
+    }
+
+    /**
+     * Corrige la numeracion de la tabla al estar el 
+     * chek activo
+     */
+    public function updatingActivo()
+    {
+        $this->resetPage();
     }
 
     /**
@@ -56,6 +94,10 @@ class Gremiocomponente extends Component
         $this->modalAgregar = true;
     }
 
+    /**
+     * Busca la información básica 
+     * de un gremio
+     */
     public function detallesdegremio($identificador)
     {
         $this->modalAgregar = false;
@@ -70,6 +112,10 @@ class Gremiocomponente extends Component
         $this->modalGremio = true;
     }
 
+    /**
+     * Almacena el identificador usado por albion  
+     * de un gremio, su nombre y su escudo
+     */
     public function guardargremio()
     {
         $this->validate();

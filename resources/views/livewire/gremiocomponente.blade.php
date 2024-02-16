@@ -3,14 +3,14 @@
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <div class="flex items-start p-4 bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">            
             <div class="ml-4">
-              <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight">Actividades en lista</h2>
-              <p class="mt-2 text-sm dark:text-gray-200"></p>
+              <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight">Gremios Registrados</h2>
+              <p class="mt-2 text-sm dark:text-gray-200">{{$num}}</p>
             </div>
         </div>
         <div class="flex items-start p-4 bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">            
             <div class="ml-4">
-              <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight">Actividades realizadas</h2>
-              <p class="mt-2 text-sm dark:text-gray-200"></p>
+              <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight">Activos</h2>
+              <p class="mt-2 text-sm dark:text-gray-200">{{$acti}}</p>
             </div>
         </div>
         <div class="flex items-start p-4 bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">            
@@ -165,4 +165,131 @@
             </div>
         </x-slot>
     </x-dialog-modall>
+
+    <!-- Lista de Actividades -->
+    <div class="mt-4 bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+        <!-- cabecera, titulo, búsquedas y límite de lista -->
+        <div class="flex flex-wrap items-center px-4 py-2">
+            <div class="relative w-full max-w-full flex-grow flex-1">
+              <h3 class="font-semibold text-base text-gray-800 dark:text-gray-200 leading-tight">Lista de Actividades</h3>
+            </div>
+            <div class="flex flex-col items-center w-full max-w-xl">   
+                <x-input class="block mt-1 w-100" type="search" wire:model="buscar" placeholder="Buscar" /> 
+                
+            </div>
+            <div>
+                <div class="flex-1 text-right">      
+                    <label class="inline-flex items-center mt-3 ">
+                      <span class="mr-2 font-semibold text-base text-gray-800 dark:text-gray-200 leading-tight">Activas: </span>                      
+                      <x-checkbox class="rounded-full" name="activo" wire:model="activo" />
+                    </label>
+                </div>
+            </div>
+            <div class="relative w-full max-w-full flex-grow flex-1 text-right mt-1">
+                <select wire:model.live="lim"
+                    class="w-25 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-blue-500 dark:focus:border-blue-500 focus:ring-blue-500 dark:focus:ring-blue-500 rounded-md shadow-sm">
+                    <option value="6" selected>6</option>
+                    <option value="12">12</option>
+                    <option value="24">24</option>
+                    <option value="36">36</option>
+                    <option value="48">48</option>
+                </select>
+            </div>
+        </div>
+        <!-- mensaje -->
+        <div>
+            @if (session()->has('message'))
+                <div class="max-w-lg mx-auto">
+                    <div class="flex bg-emerald-100 rounded-lg p-4 mb-4 text-sm text-emerald-700" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-5 w-5 mr-3"
+                            fill="none" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <div>
+                            <span class="font-medium">{{ session('message') }}</span>.
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+        <!-- / mensaje -->
+
+        <!-- tabla -->
+        <div class="w-full overflow-hidden rounded-lg shadow-xs">
+            <div class="w-full overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                            <th class="px-4 py-3">Nombre</th>
+                            <th class="px-4 py-3">ID de Albion</th>
+                            <th class="px-4 py-3">Estado</th>
+                            <th class="px-4 py-3">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                        @foreach ($guilds as $guild)
+                            <tr class="text-gray-700 dark:text-gray-100">                                           
+                                <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                                    {{$guild->nombre_gremio}}                                                                                                            
+                                </th>
+                                
+                                <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                                    {{$guild->id_gremio}}  
+                                </th>
+
+                                <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
+                                    @switch($guild->estado)
+                                        @case(0)
+                                            <span class="bg-pink_salmon dark:text-maroon_oak text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">Inactivo</span>
+                                        @break
+                                        @case(1)
+                                            <span class="bg-malachite dark:text-deep_fir text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg">Active</span>
+                                        @break
+                                        @default
+                                    @endswitch         
+                                </th>                                        
+                                
+                                <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                                    <div class="flex item-center justify-center">
+                                        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                                            wire:click="">
+                                            <a href="#">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                </svg>
+                                            </a>
+                                        </div>
+
+                                        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                                                    wire:click="#">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                        stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+                                        </div>                                      
+                                    </div>                                                                                                                 
+                                </th> 
+                            </tr>   
+                            
+                        @endforeach  
+                    </tbody>                        
+                </table>
+            </div>
+            <div class="grid px-4 py-3 text-xs font-semibold tracking-wide uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9
+                         dark:text-gray-300 dark:bg-gray-800">
+                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                    {{ $guilds->links() }} 
+                </span>            
+            </div>
+        </div>
+        <!-- \tabla -->
+
+    </div>
 </div>

@@ -15,4 +15,13 @@ class Guild extends Model
         'escudo',
         'estado',
     ];
+
+    /**
+    * Realiza una busqueda de los elementos activos
+    */
+
+    public function scopeActivo( $query)
+    {
+         return $query->where('estado', 1);
+    }
 }
