@@ -18,7 +18,8 @@ class Gremiocomponente extends Component
     public $modalAgregar = false;
     public $buscar,$activo, $lim;  
     public $modalGremio = false;
-    public $id_gremio, $nombre_gremio, $alianza_gremio, $miembros_gremio, $imagen, $estado;
+    public $confirmarEliminar = false;
+    public $id_gremio, $nombre_gremio, $alianza_gremio, $miembros_gremio, $imagen, $estado, $nombre, $identificador;
 
     protected $queryString = [
         'buscar' => ['except' => ''],
@@ -136,5 +137,34 @@ class Gremiocomponente extends Component
 
         $this->modalGremio = false;
 
+        session()->flash('message', 'El gremio se a registrado correctamente.'); 
+    }
+
+    /**
+     * Consulta mediante un modal si desea eliminar 
+     * un gremio de la lista
+     */
+
+    public function consultaeliminar(Guild $gremio)
+    {
+        $this->nombre = $gremio->nombre_gremio;
+        $this->identificador = $gremio->id;
+        $this->confirmarEliminar = true;
+    }
+
+    /**
+     * Elimina el gremio de la base de datos asi como
+     * la imagen de la carpeta correspondiente 
+     */
+
+    public function borrargremio(Guild $identificador)
+    {
+        if(!empty($identificador->imagen_referencia)){
+            $url = str_replace('storage','public',$identificador->escudo);
+            Storage::delete($url);
+        } 
+        $identificador->delete();
+        $this->confirmarEliminar = false;
+        session()->flash('message', 'El Gremio ha sido Eliminado correctamente.');
     }
 }
