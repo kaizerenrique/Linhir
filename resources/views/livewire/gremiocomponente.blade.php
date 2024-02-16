@@ -138,12 +138,17 @@
 
             <div class="mt-4">
                 <x-label for="name" value="{{ __('Identificador') }}" />
+                <x-input-error for="id_gremio" class="mt-2" /> 
                 {{ $id_gremio }}
             </div>
 
             <div class="mt-4">
                 <x-label for="name" value="{{ __('Integrantes') }}" />
                 {{ $miembros_gremio }}
+            </div>
+            <div class="mt-4">
+                <x-label for="name" value="{{ __('Activar') }}" />
+                <x-checkbox class="mt-2" name="estado" id="estado" wire:model.defer="estado"  required />
             </div>
         </x-slot>
 
