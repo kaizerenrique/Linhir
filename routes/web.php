@@ -38,4 +38,8 @@ Route::middleware([
     Route::get('/actividades', function () {
         return view('componentes/actividades');
     })->name('actividades');
+
+    Route::get('/gremios', function () {
+        return view('componentes/gremios');
+    })->name('gremios');
 });
