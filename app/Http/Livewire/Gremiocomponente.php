@@ -8,6 +8,7 @@ use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Guild;
+use Carbon\Carbon;
 
 class Gremiocomponente extends Component
 {
@@ -18,8 +19,10 @@ class Gremiocomponente extends Component
     public $modalAgregar = false;
     public $buscar,$activo, $lim;  
     public $modalGremio = false;
+    public $modalver = false;
     public $confirmarEliminar = false;
-    public $id_gremio, $nombre_gremio, $alianza_gremio, $miembros_gremio, $imagen, $estado, $nombre, $identificador;
+    public $id_gremio, $nombre_gremio, $alianza_gremio, $miembros_gremio, $imagen;
+    public $estado, $nombre, $identificador, $imagen2, $kills, $deaths, $fame, $founded, $id_alianza;
 
     protected $queryString = [
         'buscar' => ['except' => ''],
@@ -159,12 +162,33 @@ class Gremiocomponente extends Component
 
     public function borrargremio(Guild $identificador)
     {
-        if(!empty($identificador->imagen_referencia)){
+        if(!empty($identificador->escudo)){
             $url = str_replace('storage','public',$identificador->escudo);
             Storage::delete($url);
         } 
         $identificador->delete();
         $this->confirmarEliminar = false;
         session()->flash('message', 'El Gremio ha sido Eliminado correctamente.');
+    }
+
+    /**
+     * Muestra los detalles del gremio
+     * 
+     */
+
+    public function verdetalles(Guild $gremio)
+    {        
+        $informacion = $this->consultargremio($gremio->id_gremio);        
+        $this->id_gremio = $informacion->guild->Id;
+        $this->nombre_gremio = $informacion->guild->Name;
+        $this->alianza_gremio = $informacion->guild->AllianceTag;
+        $this->id_alianza = $informacion->guild->AllianceId;
+        $this->miembros_gremio = $informacion->basic->memberCount;
+        $this->fame = $informacion->overall->fame;        
+        $this->deaths = $informacion->overall->deaths;
+        $this->kills = $informacion->overall->kills;
+        $this->founded = Carbon::parse($informacion->guild->Founded)->format('d-m-Y H:i:s');
+        $this->imagen2 = $gremio->escudo; 
+        $this->modalver = true; 
     }
 }

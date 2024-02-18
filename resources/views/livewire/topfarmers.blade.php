@@ -7,7 +7,7 @@
                 <div class="ml-4">
                   <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight">Agricultor</h2>
                   <p class="mt-2 text-sm dark:text-gray-200">{{$tops["Agricultor"]["Name"]}} </p>
-                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Agricultor"]["Agricultor"])}} </p>
+                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Agricultor"]["Agricultor"] , 0, ',', '.')}} </p>
                 </div>
             </div>
 
@@ -15,7 +15,7 @@
                 <div class="ml-4">
                   <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight">Cantero</h2>
                   <p class="mt-2 text-sm dark:text-gray-200">{{$tops["Cantero"]["Name"]}} </p>
-                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Cantero"]["Cantero"])}} </p>
+                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Cantero"]["Cantero"] , 0, ',', '.')}} </p>
                 </div>
             </div>
 
@@ -23,7 +23,7 @@
                 <div class="ml-4">
                   <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight">Cosechador</h2>
                   <p class="mt-2 text-sm dark:text-gray-200">{{$tops["Cosechador"]["Name"]}} </p>
-                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Cosechador"]["Cosechador"])}} </p>
+                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Cosechador"]["Cosechador"] , 0, ',', '.')}} </p>
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
                 <div class="ml-4">
                   <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight">Crafter</h2>
                   <p class="mt-2 text-sm dark:text-gray-200">{{$tops["Crafter"]["Name"]}} </p>
-                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Crafter"]["Crafter"])}} </p>
+                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Crafter"]["Crafter"] , 0, ',', '.')}} </p>
                 </div>
             </div>
 
@@ -39,7 +39,7 @@
                 <div class="ml-4">
                   <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight">Peletero</h2>
                   <p class="mt-2 text-sm dark:text-gray-200">{{$tops["Peletero"]["Name"]}} </p>
-                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Peletero"]["Peletero"])}} </p>
+                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Peletero"]["Peletero"] , 0, ',', '.')}} </p>
                 </div>
             </div>
             
@@ -47,7 +47,7 @@
                 <div class="ml-4">
                   <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight">Prospector</h2>
                   <p class="mt-2 text-sm dark:text-gray-200">{{$tops["Prospector"]["Name"]}} </p>
-                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Prospector"]["Prospector"])}} </p>
+                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Prospector"]["Prospector"] , 0, ',', '.')}} </p>
                 </div>
             </div>            
 
@@ -55,7 +55,7 @@
                 <div class="ml-4">
                   <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight">Leñador</h2>
                   <p class="mt-2 text-sm dark:text-gray-200">{{$tops["Leñador"]["Name"]}} </p>
-                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Leñador"]["Leñador"])}} </p>
+                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Leñador"]["Leñador"] , 0, ',', '.')}} </p>
                 </div>
             </div>
 
@@ -63,7 +63,7 @@
                 <div class="ml-4">
                   <h2 class="font-semibold text-gray-800 dark:text-gray-200 leading-tight">Pescador</h2>
                   <p class="mt-2 text-sm dark:text-gray-200">{{$tops["Pescador"]["Name"]}} </p>
-                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Pescador"]["Pescador"])}} </p>
+                  <p class="mt-2 text-sm dark:text-gray-200">{{number_format($tops["Pescador"]["Pescador"] , 0, ',', '.')}} </p>
                 </div>
             </div>  
             
