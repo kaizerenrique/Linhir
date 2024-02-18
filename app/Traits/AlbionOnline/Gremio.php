@@ -139,6 +139,14 @@ trait Gremio
         }
 	}
 
+	/**
+	* Esta función revisa los eventos de kills y muertes de casa
+    * integrante del gremio linhir
+	* 	
+	*
+	* @return Retorna un array.
+	*/	
+
 	public function revisarlinhir()
 	{
 		$GuildId = config('app.linhir_gremio_id');
@@ -159,4 +167,73 @@ trait Gremio
 
 		return $alfa;
 	}
+
+	/**
+	* Esta función realiza el top farmers de
+    * integrante del gremio linhir
+	* 	
+	*
+	* @return Retorna un array.
+	*/
+
+	public function topfarmerslinhir()
+    {
+        $linhir_id = config('app.linhir_gremio_id');
+        $integrantes = $this->integrantesdelgremio($linhir_id);        
+
+        foreach ($integrantes as $integrante) {
+           $cosechadorer[] = [
+            'Cosechador' => $integrante->LifetimeStatistics->Gathering->Fiber->Total,
+            'Name' => $integrante->Name,            
+           ];
+
+           $peleteros[] = [
+            'Peletero' => $integrante->LifetimeStatistics->Gathering->Hide->Total,
+            'Name' => $integrante->Name,            
+           ];
+
+           $prospectors[] = [
+            'Prospector' => $integrante->LifetimeStatistics->Gathering->Ore->Total,
+            'Name' => $integrante->Name, 
+           ];
+
+           $canteros[] = [
+            'Cantero' => $integrante->LifetimeStatistics->Gathering->Rock->Total,
+            'Name' => $integrante->Name, 
+           ];
+
+           $leñadores[] = [
+            'Leñador' => $integrante->LifetimeStatistics->Gathering->Wood->Total,
+            'Name' => $integrante->Name, 
+           ];
+
+           $pescadores[] = [
+            'Pescador' => $integrante->LifetimeStatistics->FishingFame,
+            'Name' => $integrante->Name, 
+           ];
+
+           $agricultores[] = [
+            'Agricultor' => $integrante->LifetimeStatistics->FarmingFame,
+            'Name' => $integrante->Name, 
+           ];
+
+           $crafters[] = [
+            'Crafter' => $integrante->LifetimeStatistics->Crafting->Total,
+            'Name' => $integrante->Name, 
+           ];
+        }        
+
+        $top_gremio = [
+            'Cosechador' => max($cosechadorer),
+            'Peletero' => max($peleteros),
+            'Prospector' => max($prospectors),
+            'Cantero' => max($canteros),
+            'Leñador' => max($leñadores),
+            'Pescador' => max($pescadores),
+            'Agricultor' => max($agricultores),
+            'Crafter' => max($crafters),
+        ];        
+        
+        return $top_gremio;         
+    }
 }    
