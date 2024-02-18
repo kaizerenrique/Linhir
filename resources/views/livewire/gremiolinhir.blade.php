@@ -202,6 +202,7 @@
                                 <th class="px-4 py-3">Pesca</th>
                                 <th class="px-4 py-3">Elaboración</th>
                                 <th class="px-4 py-3">Agricultura</th>
+                                <th class="px-4 py-3">Tiempo Aprox</th>
                                 <th class="px-4 py-3">Acciones</th>
                             </tr>
                         </thead>
@@ -214,39 +215,43 @@
                                     @foreach ($integrantes as $integrante )
                                         @if ($miembro->Id_albion == $integrante->Id) 
                                             <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
-                                                {{number_format($integrante->LifetimeStatistics->PvE->Total)}}    
+                                                {{number_format($integrante->LifetimeStatistics->PvE->Total , 0, ',', '.')}}    
                                             </th>
                                             
                                             <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
-                                                {{number_format($integrante->LifetimeStatistics->Gathering->Fiber->Total)}}    
+                                                {{number_format($integrante->LifetimeStatistics->Gathering->Fiber->Total , 0, ',', '.')}}    
                                             </th>
 
                                             <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
-                                                {{number_format($integrante->LifetimeStatistics->Gathering->Hide->Total)}}    
+                                                {{number_format($integrante->LifetimeStatistics->Gathering->Hide->Total , 0, ',', '.')}}    
                                             </th>
 
                                             <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
-                                                {{number_format($integrante->LifetimeStatistics->Gathering->Ore->Total)}}    
+                                                {{number_format($integrante->LifetimeStatistics->Gathering->Ore->Total , 0, ',', '.')}}    
                                             </th>
 
                                             <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
-                                                {{number_format($integrante->LifetimeStatistics->Gathering->Rock->Total)}}    
+                                                {{number_format($integrante->LifetimeStatistics->Gathering->Rock->Total , 0, ',', '.')}}    
                                             </th>
 
                                             <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
-                                                {{number_format($integrante->LifetimeStatistics->Gathering->Wood->Total)}}    
+                                                {{number_format($integrante->LifetimeStatistics->Gathering->Wood->Total , 0, ',', '.')}}    
                                             </th>
 
                                             <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
-                                                {{number_format($integrante->LifetimeStatistics->FishingFame)}}    
+                                                {{number_format($integrante->LifetimeStatistics->FishingFame , 0, ',', '.')}}    
                                             </th>
 
                                             <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
-                                                {{number_format($integrante->LifetimeStatistics->Crafting->Total)}}    
+                                                {{number_format($integrante->LifetimeStatistics->Crafting->Total , 0, ',', '.')}}    
                                             </th>
 
                                             <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
-                                                {{number_format($integrante->LifetimeStatistics->FarmingFame)}}    
+                                                {{number_format($integrante->LifetimeStatistics->FarmingFame , 0, ',', '.')}}    
+                                            </th>
+
+                                            <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                                         
+                                                {{\Carbon\Carbon::parse($integrante->LifetimeStatistics->Timestamp)->diffForHumans(\Carbon\Carbon::now())}}    
                                             </th>
                                         @endif
                                     @endforeach  
