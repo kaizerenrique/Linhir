@@ -24,4 +24,14 @@ class Guild extends Model
     {
          return $query->where('estado', 1);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'id_gremio';
+    }
+
+    public function players()
+    {
+        return $this->hasMany(Player::class);
+    }
 }

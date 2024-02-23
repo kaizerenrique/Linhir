@@ -25,12 +25,6 @@
         </div>
     </div>
 
-
-
-
-
-        
-
             <!-- Lista de Actividades -->
             <div class="mt-4 bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <!-- cabecera, titulo, búsquedas y límite de lista -->
@@ -138,6 +132,16 @@
                                         <th
                                             class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
                                             <div class="flex item-center justify-center">
+                                                <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                                                    wire:click="">
+                                                    <a href="{{ route('gremio', $guild->id_gremio) }}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                            stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                        </svg>
+                                                    </a>
+                                                </div>
+
                                                 <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
                                                     wire:click="verdetalles({{ $guild->id }})">                                                    
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"

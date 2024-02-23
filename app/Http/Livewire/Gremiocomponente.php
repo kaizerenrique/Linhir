@@ -148,8 +148,10 @@ class Gremiocomponente extends Component
      * un gremio de la lista
      */
 
-    public function consultaeliminar(Guild $gremio)
+    public function consultaeliminar($id)
     {
+        $gremio = Guild::find($id);
+
         $this->nombre = $gremio->nombre_gremio;
         $this->identificador = $gremio->id;
         $this->confirmarEliminar = true;
@@ -160,8 +162,10 @@ class Gremiocomponente extends Component
      * la imagen de la carpeta correspondiente 
      */
 
-    public function borrargremio(Guild $identificador)
+    public function borrargremio($id)
     {
+        $identificador = Guild::find($id);
+
         if(!empty($identificador->escudo)){
             $url = str_replace('storage','public',$identificador->escudo);
             Storage::delete($url);
@@ -176,8 +180,9 @@ class Gremiocomponente extends Component
      * 
      */
 
-    public function verdetalles(Guild $gremio)
+    public function verdetalles($id)
     {        
+        $gremio = Guild::find($id);
         $informacion = $this->consultargremio($gremio->id_gremio);        
         $this->id_gremio = $informacion->guild->Id;
         $this->nombre_gremio = $informacion->guild->Name;

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Comp\Detallesdegremio;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,6 @@ Route::middleware([
     Route::get('/gremios', function () {
         return view('componentes/gremios');
     })->name('gremios');
+
+    Route::get('/gremio/{slug}', Detallesdegremio::class)->name('gremio');
 });
