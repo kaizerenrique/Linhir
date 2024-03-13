@@ -22,6 +22,8 @@ class ConfiguracionInicialSeeder extends Seeder
         $oficial = Role::create(['name' => 'Oficial']); //Oficial del gremio
         $suboficial = Role::create(['name' => 'Sub-Oficial']); //Oficial del gremio
         $user = Role::create(['name' => 'Usuario']); //Usuario Final
+        $rentA = Role::create(['name' => 'Renter_A']); //usuario renter
+        $rentB = Role::create(['name' => 'Renter_B']); //usuario renter
         
         //Permisos del Sistema
         //Permisos de la barra del menu

@@ -19,6 +19,12 @@ return new class extends Migration
                     ->constrained()  // <-- DEFINE LA RESTRICCION DE LLAVE FORANEA
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
+                    
+            $table->foreignId('user_id') // UNSIGNED BIG INT
+                    ->nullable() // <-- IMPORTANTE: LA COLUMNA DEBE ACEPTAR NULL COMO VALOR VALIDO
+                    ->constrained()  // <-- DEFINE LA RESTRICCION DE LLAVE FORANEA
+                    ->onDelete('SET NULL')
+                    ->onUpdate('cascade');
 
             $table->string('Name');
             $table->string('Id_albion');
