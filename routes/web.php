@@ -45,4 +45,6 @@ Route::middleware([
     })->name('gremios');
 
     Route::get('/gremio/{slug}', Detallesdegremio::class)->name('gremio');
+
+    
 });

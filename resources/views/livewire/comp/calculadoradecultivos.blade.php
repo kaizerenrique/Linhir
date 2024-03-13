@@ -1,13 +1,18 @@
 <div class="mt-4 bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-
     <div class="flex flex-wrap items-center px-4 py-2">
         <div class="relative w-full max-w-full flex-grow flex-1">
             <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Premium ') }}</span>
-            <x-checkbox id="premium" name="premium" wire:model="premium" /> <br>
+            <x-checkbox name="premium" wire:model.live="premium" /> <br>
+
+            <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Impuesto: ') }} {{$imp}}</span>
+            <br>
+            
             <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Uso Foco ') }}</span>
-            <x-checkbox id="foco" name="foco" wire:model="foco" /> <br>
+            <x-checkbox name="foco" wire:model.live="foco" /> <br>
+            
             <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Bono de Ciudad ') }}</span>
-            <x-checkbox id="bono" name="bono" wire:model="bono" /> <br>
+            <x-checkbox name="bono" wire:model.live="bono" /> <br>
+            
         </div>
         <div class="flex flex-col items-center w-full max-w-xl">   
             
@@ -62,13 +67,22 @@
                             <img src="{{asset('/plantilla/recursos/farming/T1_FARM_CARROT_SEED.png')}}" alt="T1_FARM_CARROT_SEED" class="w-12 h-12">                                                                        
                         </th>
                         <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
-                            <x-input id="carrotseed" class="block w-full" type="number" name="carrotseed" value="0" />                                                                         
+                            <x-input id="carrotseed" class="block w-full" type="number" name="carrotseed" wire:model="carrotseed" value="0" />                                                                         
                         </th>
                         <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                             <img src="{{asset('/plantilla/recursos/farming/T1_CARROT.png')}}" alt="T1_CARROT" class="w-12 h-12">                                                                        
                         </th>
                         <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
-                            <x-input id="carrot" class="block w-full" type="number" name="carrot" value="0" />                                                                         
+                            <x-input id="carrot" class="block w-full" type="number" name="carrot" wire:model="carrot" value="0" />                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_carrot['retorno']}}                                                                     
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_carrot['r_semillas']}}                                                                     
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_carrot['profit']}}                                                                     
                         </th>
                     </tr>
                 </tbody>                        
