@@ -85,6 +85,33 @@
                             {{$r_carrot['profit']}}                                                                     
                         </th>
                     </tr>
+
+                    <tr class="text-gray-700 dark:text-gray-100">
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            Bridgewatch                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            <img src="{{asset('/plantilla/recursos/farming/T2_FARM_BEAN_SEED.png')}}" alt="T2_FARM_BEAN_SEED" class="w-12 h-12">                                                                        
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            <x-input id="beanseed" class="block w-full" type="number" name="beanseed" wire:model="beanseed" value="0" />                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            <img src="{{asset('/plantilla/recursos/farming/T2_BEAN.png')}}" alt="T2_BEAN" class="w-12 h-12">                                                                        
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            <x-input id="bean" class="block w-full" type="number" name="bean" wire:model="bean" value="0" />                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_bean['retorno']}}                                                                     
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_bean['r_semillas']}}                                                                     
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_bean['profit']}}                                                                     
+                        </th>
+                    </tr>
                 </tbody>                        
             </table>
         </div>
