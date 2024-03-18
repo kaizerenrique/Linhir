@@ -14,6 +14,7 @@ class Calculadoradecultivos extends Component
     public $beanseed, $bean;
     public $wheatseed, $wheat;
     public $turnipseed, $turnip;
+    public $cabbageseed, $cabbage;
   
 
     public function render()
@@ -54,6 +55,14 @@ class Calculadoradecultivos extends Component
             $this->turnip = 0;
         };
 
+        if ($this->cabbageseed == null) {
+            $this->cabbageseed = 0;
+        };
+
+        if ($this->cabbage == null) {
+            $this->cabbage = 0;
+        };
+
         //calcular el valor de los impuestos
         $imp = $this->impuestos($this->premium);
 
@@ -65,12 +74,15 @@ class Calculadoradecultivos extends Component
 
         $r_turnip = $this->cal_turnip($this->turnipseed, $this->turnip);
 
+        $r_cabbage = $this->cal_cabbage($this->cabbageseed, $this->cabbage);
+
         return view('livewire.comp.calculadoradecultivos',[            
             'imp' => $imp,
             'r_carrot' => $r_carrot,
             'r_bean' => $r_bean,
             'r_wheat' => $r_wheat,
             'r_turnip' => $r_turnip,
+            'r_cabbage' => $r_cabbage,
         ]);
     }
 
@@ -343,6 +355,72 @@ class Calculadoradecultivos extends Component
             } else {
                 $sec_a = (9/2) * $this->parcelas * 9 * $this->turnip * (1-($imp/100)) + ($this->turnipseed * $sem);
                 $sec_b = $this->turnipseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            }
+        }
+
+        $info = [
+            'retorno' => $retorno,
+            'r_semillas' => $r_semillas,
+            'profit' => $profit
+        ];
+
+        return $info;
+    }
+
+    /**
+     * Función para el cálculo de col
+     * 
+     */
+    public function cal_cabbage()
+    {
+        $v = $this->validate([ 
+            'premium' => 'required|boolean',
+            'foco' => 'required|boolean',
+            'bono' => 'required|boolean',
+            'parcelas' => 'numeric',
+            'cabbageseed' => 'numeric|nullable',
+            'cabbage' => 'numeric|nullable',
+        ]);
+
+        //calcular el valor de los impuestos
+        $imp = $this->impuestos($this->premium);
+
+        //retorno de semillas
+        if ($this->foco == true) {
+            //porcentaje de retorno en el caso de las col es 126%
+            $retorno = 120;
+
+            //semillas regresadas
+            $sem = $this->parcelas * 9 * $retorno/100;
+            $r_semillas = round($sem);
+        } else {
+            //porcentaje de retorno en el caso de las col es 73.3%
+            $retorno = 80;
+            //semillas regresadas
+            $sem = $this->parcelas * 9 * $retorno/100;
+            $r_semillas = round($sem);
+        }
+
+        if ($this->premium == true) {
+            if ($this->bono == true) {
+
+                $sec_a = 9.9 * $this->parcelas * 9 * $this->cabbage * (1-($imp/100)) + ($this->cabbageseed * $sem);
+                $sec_b = $this->cabbageseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            } else {
+                $sec_a = 9 * $this->parcelas * 9 * $this->cabbage * (1-($imp/100)) + ($this->cabbageseed * $sem);
+                $sec_b = $this->cabbageseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            }
+        } else {
+            if ($this->bono == true) {
+                $sec_a = (9.9/2) * $this->parcelas * 9 * $this->cabbage * (1-($imp/100)) + ($this->cabbageseed * $sem);
+                $sec_b = $this->cabbageseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            } else {
+                $sec_a = (9/2) * $this->parcelas * 9 * $this->cabbage * (1-($imp/100)) + ($this->cabbageseed * $sem);
+                $sec_b = $this->cabbageseed * 9 * $this->parcelas;
                 $profit = round($sec_a - $sec_b);
             }
         }
