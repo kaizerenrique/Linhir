@@ -227,6 +227,34 @@
                         </th>
                     </tr>
 
+                    <!-- maiz --> 
+                    <tr class="text-gray-700 dark:text-gray-100">
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            Bridgewatch                                                                       
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            <img src="{{asset('/plantilla/recursos/farming/T7_FARM_CORN_SEED.png')}}" alt="T7_FARM_CORN_SEED" class="w-12 h-12">                                                                        
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            <x-input id="cornseed" class="block w-full" type="number" name="cornseed" wire:model="cornseed" value="0" />                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            <img src="{{asset('/plantilla/recursos/farming/T7_CORN.png')}}" alt="T7_CORN" class="w-12 h-12">                                                                        
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            <x-input id="corn" class="block w-full" type="number" name="corn" wire:model="corn" value="0" />                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_corn['retorno']}}                                                                     
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_corn['r_semillas']}}                                                                     
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_corn['profit']}}                                                                     
+                        </th>
+                    </tr>
+
                 </tbody>                        
             </table>
         </div>
