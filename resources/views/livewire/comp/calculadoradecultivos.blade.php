@@ -199,6 +199,34 @@
                         </th>
                     </tr>
 
+                    <!-- papa --> 
+                    <tr class="text-gray-700 dark:text-gray-100">
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            Thetford                                                                       
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            <img src="{{asset('/plantilla/recursos/farming/T6_FARM_POTATO_SEED.png')}}" alt="T6_FARM_POTATO_SEED" class="w-12 h-12">                                                                        
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            <x-input id="potatoseed" class="block w-full" type="number" name="potatoseed" wire:model="potatoseed" value="0" />                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            <img src="{{asset('/plantilla/recursos/farming/T6_POTATO.png')}}" alt="T6_POTATO" class="w-12 h-12">                                                                        
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            <x-input id="potato" class="block w-full" type="number" name="potato" wire:model="potato" value="0" />                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_potato['retorno']}}                                                                     
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_potato['r_semillas']}}                                                                     
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_potato['profit']}}                                                                     
+                        </th>
+                    </tr>
+
                 </tbody>                        
             </table>
         </div>
