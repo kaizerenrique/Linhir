@@ -38,6 +38,10 @@ class Calculadoradecultivos extends Component
         ]);
     }
 
+    /**
+     * Función para el cálculo de los Impuestos
+     * 
+     */
     public function impuestos($premium)
     {
         $this->validate([ 
@@ -54,6 +58,10 @@ class Calculadoradecultivos extends Component
         
     }
 
+    /**
+     * Función para el cálculo de zanahorias
+     * 
+     */
     public function cal_carrot()
     {
         $v = $this->validate([ 
@@ -70,7 +78,7 @@ class Calculadoradecultivos extends Component
 
         //retorno de semillas
         if ($this->foco == true) {
-            //porcentaje de retorno
+            //porcentaje de retorno en el caso de las zanahorias es 200%
             $retorno = 200;
 
             //semillas regresadas
@@ -81,8 +89,6 @@ class Calculadoradecultivos extends Component
             //semillas regresadas
             $r_semillas = $this->parcelas * 9 * $retorno; 
         }
-
-
 
         if ($this->premium == true) {
             if ($this->bono == true) {
@@ -106,9 +112,6 @@ class Calculadoradecultivos extends Component
                 $profit = ceil($sec_a - $sec_b);
             }
         }
-
-        
-        
 
         $info = [
             'retorno' => $retorno,
