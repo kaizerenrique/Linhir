@@ -12,6 +12,7 @@ class Calculadoradecultivos extends Component
     //variables de producto
     public $carrotseed, $carrot;
     public $beanseed, $bean;
+    public $wheatseed, $wheat;
   
 
     public function render()
@@ -36,6 +37,14 @@ class Calculadoradecultivos extends Component
             $this->bean = 0;
         };
 
+        if ($this->wheatseed == null) {
+            $this->wheatseed = 0;
+        };
+
+        if ($this->wheat == null) {
+            $this->wheat = 0;
+        };
+
         //calcular el valor de los impuestos
         $imp = $this->impuestos($this->premium);
 
@@ -43,10 +52,13 @@ class Calculadoradecultivos extends Component
 
         $r_bean = $this->cal_bean($this->beanseed, $this->bean);
 
+        $r_wheat = $this->cal_wheat($this->wheatseed, $this->wheat);
+
         return view('livewire.comp.calculadoradecultivos',[            
             'imp' => $imp,
             'r_carrot' => $r_carrot,
             'r_bean' => $r_bean,
+            'r_wheat' => $r_wheat,
         ]);
     }
 
@@ -154,16 +166,16 @@ class Calculadoradecultivos extends Component
 
         //retorno de semillas
         if ($this->foco == true) {
-            //porcentaje de retorno en el caso de las frijol es 33.3%
+            //porcentaje de retorno en el caso de las frijol es 166.3%
             $retorno = 166.3;
 
             //semillas regresadas
-            $r_semillas = $this->parcelas * 9 * $retorno /100; 
+            $r_semillas = round($this->parcelas * 9 * $retorno /100); 
         } else {
             //porcentaje de retorno en el caso de las frijol es 33.3%
             $retorno = 33.3;
             //semillas regresadas
-            $r_semillas = $this->parcelas * 9 * $retorno/100; 
+            $r_semillas = round($this->parcelas * 9 * $retorno/100); 
         }
 
         if ($this->premium == true) {
@@ -185,6 +197,70 @@ class Calculadoradecultivos extends Component
             } else {
                 $sec_a = (9/2) * $this->parcelas * 9 * $this->bean * (1-($imp/100)) + ($this->beanseed * $r_semillas);
                 $sec_b = $this->beanseed * 9 * $this->parcelas;
+                $profit = ceil($sec_a - $sec_b);
+            }
+        }
+
+        $info = [
+            'retorno' => $retorno,
+            'r_semillas' => $r_semillas,
+            'profit' => $profit
+        ];
+
+        return $info;
+    }
+
+    /**
+     * Función para el cálculo de trigo
+     * 
+     */
+    public function cal_wheat()
+    {
+        $v = $this->validate([ 
+            'premium' => 'required|boolean',
+            'foco' => 'required|boolean',
+            'bono' => 'required|boolean',
+            'parcelas' => 'numeric',
+            'wheatseed' => 'numeric|nullable',
+            'wheat' => 'numeric|nullable',
+        ]);
+
+        //calcular el valor de los impuestos
+        $imp = $this->impuestos($this->premium);
+
+        //retorno de semillas
+        if ($this->foco == true) {
+            //porcentaje de retorno en el caso de las frijol es 140%
+            $retorno = 140;
+
+            //semillas regresadas
+            $r_semillas = round($this->parcelas * 9 * $retorno /100); 
+        } else {
+            //porcentaje de retorno en el caso de las trigo es 60%
+            $retorno = 60;
+            //semillas regresadas
+            $r_semillas = round( $this->parcelas * 9 * $retorno/100); 
+        }
+
+        if ($this->premium == true) {
+            if ($this->bono == true) {
+
+                $sec_a = 9.9 * $this->parcelas * 9 * $this->wheat * (1-($imp/100)) + ($this->wheatseed * $r_semillas);
+                $sec_b = $this->wheatseed * 9 * $this->parcelas;
+                $profit = ceil($sec_a - $sec_b);
+            } else {
+                $sec_a = 9 * $this->parcelas * 9 * $this->wheat * (1-($imp/100)) + ($this->wheatseed * $r_semillas);
+                $sec_b = $this->wheatseed * 9 * $this->parcelas;
+                $profit = ceil($sec_a - $sec_b);
+            }
+        } else {
+            if ($this->bono == true) {
+                $sec_a = (9.9/2) * $this->parcelas * 9 * $this->wheat * (1-($imp/100)) + ($this->wheatseed * $r_semillas);
+                $sec_b = $this->wheatseed * 9 * $this->parcelas;
+                $profit = ceil($sec_a - $sec_b);
+            } else {
+                $sec_a = (9/2) * $this->parcelas * 9 * $this->wheat * (1-($imp/100)) + ($this->wheatseed * $r_semillas);
+                $sec_b = $this->wheatseed * 9 * $this->parcelas;
                 $profit = ceil($sec_a - $sec_b);
             }
         }

@@ -58,7 +58,8 @@
                         <th class="px-4 py-3">Profit</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">                   
+                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">     
+                    <!-- zanahorias -->              
                     <tr class="text-gray-700 dark:text-gray-100">
                         <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                             Lymhurst                                                                         
@@ -85,7 +86,8 @@
                             {{$r_carrot['profit']}}                                                                     
                         </th>
                     </tr>
-
+                    
+                    <!-- frijol --> 
                     <tr class="text-gray-700 dark:text-gray-100">
                         <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                             Bridgewatch                                                                         
@@ -110,8 +112,37 @@
                         </th>
                         <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
                             {{$r_bean['profit']}}                                                                     
+                        </th>  
+                    </tr>
+
+                    <!-- trigo --> 
+                    <tr class="text-gray-700 dark:text-gray-100">
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            Martlock                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            <img src="{{asset('/plantilla/recursos/farming/T3_FARM_WHEAT_SEED.png')}}" alt="T3_FARM_WHEAT_SEED" class="w-12 h-12">                                                                        
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            <x-input id="wheatseed" class="block w-full" type="number" name="wheatseed" wire:model="wheatseed" value="0" />                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            <img src="{{asset('/plantilla/recursos/farming/T3_WHEAT.png')}}" alt="T3_WHEAT" class="w-12 h-12">                                                                        
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            <x-input id="wheat" class="block w-full" type="number" name="wheat" wire:model="wheat" value="0" />                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_wheat['retorno']}}                                                                     
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_wheat['r_semillas']}}                                                                     
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_wheat['profit']}}                                                                     
                         </th>
                     </tr>
+
                 </tbody>                        
             </table>
         </div>
