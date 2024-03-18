@@ -17,6 +17,7 @@ class Calculadoradecultivos extends Component
     public $cabbageseed, $cabbage;
     public $potatoseed, $potato;
     public $cornseed, $corn;
+    public $punpkinseed, $punpkin;
   
 
     public function render()
@@ -81,6 +82,14 @@ class Calculadoradecultivos extends Component
             $this->corn = 0;
         };
 
+        if ($this->punpkinseed == null) {
+            $this->punpkinseed = 0;
+        };
+
+        if ($this->punpkin == null) {
+            $this->punpkin = 0;
+        };
+
         //calcular el valor de los impuestos
         $imp = $this->impuestos($this->premium);
 
@@ -98,6 +107,8 @@ class Calculadoradecultivos extends Component
 
         $r_corn = $this->cal_corn($this->cornseed, $this->corn);
 
+        $r_punpkin = $this->cal_punpkin($this->punpkinseed, $this->punpkin);
+
         return view('livewire.comp.calculadoradecultivos',[            
             'imp' => $imp,
             'r_carrot' => $r_carrot,
@@ -107,6 +118,7 @@ class Calculadoradecultivos extends Component
             'r_cabbage' => $r_cabbage,
             'r_potato' => $r_potato,
             'r_corn' => $r_corn,
+            'r_punpkin' => $r_punpkin,
         ]);
     }
 
@@ -478,14 +490,14 @@ class Calculadoradecultivos extends Component
 
         //retorno de semillas
         if ($this->foco == true) {
-            //porcentaje de retorno en el caso de las col es 113.7%
+            //porcentaje de retorno en el caso de las papa es 113.7%
             $retorno = 113.7;
 
             //semillas regresadas
             $sem = $this->parcelas * 9 * $retorno/100;
             $r_semillas = round($sem);
         } else {
-            //porcentaje de retorno en el caso de las col es 86.7%
+            //porcentaje de retorno en el caso de las papa es 86.7%
             $retorno = 86.7;
             //semillas regresadas
             $sem = $this->parcelas * 9 * $retorno/100;
@@ -544,14 +556,14 @@ class Calculadoradecultivos extends Component
 
         //retorno de semillas
         if ($this->foco == true) {
-            //porcentaje de retorno en el caso de las col es 113.7%
+            //porcentaje de retorno en el caso de las maiz es 109.1%
             $retorno = 109.1;
 
             //semillas regresadas
             $sem = $this->parcelas * 9 * $retorno/100;
             $r_semillas = round($sem);
         } else {
-            //porcentaje de retorno en el caso de las col es 86.7%
+            //porcentaje de retorno en el caso de las maiz es 91.1%
             $retorno = 91.1;
             //semillas regresadas
             $sem = $this->parcelas * 9 * $retorno/100;
@@ -577,6 +589,72 @@ class Calculadoradecultivos extends Component
             } else {
                 $sec_a = (9/2) * $this->parcelas * 9 * $this->corn * (1-($imp/100)) + ($this->cornseed * $sem);
                 $sec_b = $this->cornseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            }
+        }
+
+        $info = [
+            'retorno' => $retorno,
+            'r_semillas' => $r_semillas,
+            'profit' => $profit
+        ];
+
+        return $info;
+    }
+
+    /**
+     * Función para el cálculo de calabaza
+     * 
+     */
+    public function cal_punpkin()
+    {
+        $v = $this->validate([ 
+            'premium' => 'required|boolean',
+            'foco' => 'required|boolean',
+            'bono' => 'required|boolean',
+            'parcelas' => 'numeric',
+            'punpkinseed' => 'numeric|nullable',
+            'punpkin' => 'numeric|nullable',
+        ]);
+
+        //calcular el valor de los impuestos
+        $imp = $this->impuestos($this->premium);
+
+        //retorno de semillas
+        if ($this->foco == true) {
+            //porcentaje de retorno en el caso de las calabaza es 106.3%
+            $retorno = 106.3;
+
+            //semillas regresadas
+            $sem = $this->parcelas * 9 * $retorno/100;
+            $r_semillas = round($sem);
+        } else {
+            //porcentaje de retorno en el caso de las calabaza es 93.3%
+            $retorno = 93.3;
+            //semillas regresadas
+            $sem = $this->parcelas * 9 * $retorno/100;
+            $r_semillas = round($sem);
+        }
+
+        if ($this->premium == true) {
+            if ($this->bono == true) {
+
+                $sec_a = 9.9 * $this->parcelas * 9 * $this->punpkin * (1-($imp/100)) + ($this->punpkinseed * $sem);
+                $sec_b = $this->punpkinseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            } else {
+                $sec_a = 9 * $this->parcelas * 9 * $this->punpkin * (1-($imp/100)) + ($this->punpkinseed * $sem);
+                $sec_b = $this->punpkinseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            }
+        } else {
+            if ($this->bono == true) {
+                $sec_a = (9.9/2) * $this->parcelas * 9 * $this->punpkin * (1-($imp/100)) + ($this->punpkinseed * $sem);
+                $sec_b = $this->punpkinseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            } else {
+                $sec_a = (9/2) * $this->parcelas * 9 * $this->punpkin * (1-($imp/100)) + ($this->punpkinseed * $sem);
+                $sec_b = $this->punpkinseed * 9 * $this->parcelas;
                 $profit = round($sec_a - $sec_b);
             }
         }
