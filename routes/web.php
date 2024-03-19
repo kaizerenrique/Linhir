@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/calculadoradesemillas', function () {
+    return view('componentes/calculadoradesemillas');
+})->name('calculadora de semillas');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -48,3 +52,5 @@ Route::middleware([
 
     
 });
+
+
