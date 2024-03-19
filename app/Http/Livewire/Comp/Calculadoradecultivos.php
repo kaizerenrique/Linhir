@@ -18,6 +18,9 @@ class Calculadoradecultivos extends Component
     public $potatoseed, $potato;
     public $cornseed, $corn;
     public $punpkinseed, $punpkin;
+
+    public $agaricseed, $agaric;
+    public $comfreyseed, $comfrey;
   
 
     public function render()
@@ -90,6 +93,22 @@ class Calculadoradecultivos extends Component
             $this->punpkin = 0;
         };
 
+        if ($this->agaricseed == null) {
+            $this->agaricseed = 0;
+        };
+
+        if ($this->agaric == null) {
+            $this->agaric = 0;
+        };
+
+        if ($this->comfreyseed == null) {
+            $this->comfreyseed = 0;
+        };
+
+        if ($this->comfrey == null) {
+            $this->comfrey = 0;
+        };
+
         //calcular el valor de los impuestos
         $imp = $this->impuestos($this->premium);
 
@@ -109,6 +128,10 @@ class Calculadoradecultivos extends Component
 
         $r_punpkin = $this->cal_punpkin($this->punpkinseed, $this->punpkin);
 
+        $r_agaric = $this->cal_agaric($this->agaricseed, $this->agaric);
+
+        $r_comfrey = $this->cal_comfrey($this->comfreyseed, $this->comfrey);
+
         return view('livewire.comp.calculadoradecultivos',[            
             'imp' => $imp,
             'r_carrot' => $r_carrot,
@@ -119,6 +142,8 @@ class Calculadoradecultivos extends Component
             'r_potato' => $r_potato,
             'r_corn' => $r_corn,
             'r_punpkin' => $r_punpkin,
+            'r_agaric' => $r_agaric,
+            'r_comfrey' => $r_comfrey,
         ]);
     }
 
@@ -655,6 +680,138 @@ class Calculadoradecultivos extends Component
             } else {
                 $sec_a = (9/2) * $this->parcelas * 9 * $this->punpkin * (1-($imp/100)) + ($this->punpkinseed * $sem);
                 $sec_b = $this->punpkinseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            }
+        }
+
+        $info = [
+            'retorno' => $retorno,
+            'r_semillas' => $r_semillas,
+            'profit' => $profit
+        ];
+
+        return $info;
+    }
+
+    /**
+     * Función para el cálculo de Agárico arcano
+     * 
+     */
+    public function cal_agaric()
+    {
+        $v = $this->validate([ 
+            'premium' => 'required|boolean',
+            'foco' => 'required|boolean',
+            'bono' => 'required|boolean',
+            'parcelas' => 'numeric',
+            'agaricseed' => 'numeric|nullable',
+            'agaric' => 'numeric|nullable',
+        ]);
+
+        //calcular el valor de los impuestos
+        $imp = $this->impuestos($this->premium);
+
+        //retorno de semillas
+        if ($this->foco == true) {
+            //porcentaje de retorno en el caso de las Agárico arcano es 166.3%
+            $retorno = 166.3;
+
+            //semillas regresadas
+            $sem = $this->parcelas * 9 * $retorno/100;
+            $r_semillas = round($sem);
+        } else {
+            //porcentaje de retorno en el caso de las Agárico arcano es 33.3%
+            $retorno = 33.3;
+            //semillas regresadas
+            $sem = $this->parcelas * 9 * $retorno/100;
+            $r_semillas = round($sem);
+        }
+
+        if ($this->premium == true) {
+            if ($this->bono == true) {
+
+                $sec_a = 9.9 * $this->parcelas * 9 * $this->agaric * (1-($imp/100)) + ($this->agaricseed * $sem);
+                $sec_b = $this->agaricseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            } else {
+                $sec_a = 9 * $this->parcelas * 9 * $this->agaric * (1-($imp/100)) + ($this->agaricseed * $sem);
+                $sec_b = $this->agaricseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            }
+        } else {
+            if ($this->bono == true) {
+                $sec_a = (9.9/2) * $this->parcelas * 9 * $this->agaric * (1-($imp/100)) + ($this->agaricseed * $sem);
+                $sec_b = $this->agaricseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            } else {
+                $sec_a = (9/2) * $this->parcelas * 9 * $this->agaric * (1-($imp/100)) + ($this->agaricseed * $sem);
+                $sec_b = $this->agaricseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            }
+        }
+
+        $info = [
+            'retorno' => $retorno,
+            'r_semillas' => $r_semillas,
+            'profit' => $profit
+        ];
+
+        return $info;
+    }
+
+    /**
+     * Función para el cálculo de Consuelda hojabrillante
+     * 
+     */
+    public function cal_comfrey()
+    {
+        $v = $this->validate([ 
+            'premium' => 'required|boolean',
+            'foco' => 'required|boolean',
+            'bono' => 'required|boolean',
+            'parcelas' => 'numeric',
+            'comfreyseed' => 'numeric|nullable',
+            'comfrey' => 'numeric|nullable',
+        ]);
+
+        //calcular el valor de los impuestos
+        $imp = $this->impuestos($this->premium);
+
+        //retorno de semillas
+        if ($this->foco == true) {
+            //porcentaje de retorno en el caso de las Consuelda hojabrillante es 140%
+            $retorno = 140;
+
+            //semillas regresadas
+            $sem = $this->parcelas * 9 * $retorno/100;
+            $r_semillas = round($sem);
+        } else {
+            //porcentaje de retorno en el caso de las Consuelda hojabrillante es 60%
+            $retorno = 60;
+            //semillas regresadas
+            $sem = $this->parcelas * 9 * $retorno/100;
+            $r_semillas = round($sem);
+        }
+
+        if ($this->premium == true) {
+            if ($this->bono == true) {
+
+                $sec_a = 9.9 * $this->parcelas * 9 * $this->comfrey * (1-($imp/100)) + ($this->comfreyseed * $sem);
+                $sec_b = $this->comfreyseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            } else {
+                $sec_a = 9 * $this->parcelas * 9 * $this->comfrey * (1-($imp/100)) + ($this->comfreyseed * $sem);
+                $sec_b = $this->comfreyseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            }
+        } else {
+            if ($this->bono == true) {
+                $sec_a = (9.9/2) * $this->parcelas * 9 * $this->comfrey * (1-($imp/100)) + ($this->comfreyseed * $sem);
+                $sec_b = $this->comfreyseed * 9 * $this->parcelas;
+                $profit = round($sec_a - $sec_b);
+            } else {
+                $sec_a = (9/2) * $this->parcelas * 9 * $this->comfrey * (1-($imp/100)) + ($this->comfreyseed * $sem);
+                $sec_b = $this->comfreyseed * 9 * $this->parcelas;
                 $profit = round($sec_a - $sec_b);
             }
         }

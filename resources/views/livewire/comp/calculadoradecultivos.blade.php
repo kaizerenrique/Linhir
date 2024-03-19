@@ -283,6 +283,63 @@
                         </th>
                     </tr>
 
+                    <!--- --->
+                    <!-- Agárico arcano --> 
+                    <tr class="text-gray-700 dark:text-gray-100">
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            Thetford                                                                       
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            <img src="{{asset('/plantilla/recursos/farming/potis/T2_FARM_AGARIC_SEED.png')}}" alt="T2_FARM_AGARIC_SEED" class="w-12 h-12">                                                                        
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            <x-input id="agaricseed" class="block w-full" type="number" name="agaricseed" wire:model="agaricseed" value="0" />                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            <img src="{{asset('/plantilla/recursos/farming/potis/T2_AGARIC.png')}}" alt="T2_AGARIC" class="w-12 h-12">                                                                        
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            <x-input id="agaric" class="block w-full" type="number" name="agaric" wire:model="agaric" value="0" />                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_agaric['retorno']}}                                                                     
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_agaric['r_semillas']}}                                                                     
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_agaric['profit']}}                                                                     
+                        </th>
+                    </tr>
+
+                    <!-- Consuelda hojabrillante --> 
+                    <tr class="text-gray-700 dark:text-gray-100">
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            Caerleon                                                                       
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            <img src="{{asset('/plantilla/recursos/farming/potis/T3_FARM_COMFREY_SEED.png')}}" alt="T3_FARM_COMFREY_SEED" class="w-12 h-12">                                                                        
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            <x-input id="comfreyseed" class="block w-full" type="number" name="comfreyseed" wire:model="comfreyseed" value="0" />                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            <img src="{{asset('/plantilla/recursos/farming/potis/T3_COMFREY.png')}}" alt="T3_COMFREY" class="w-12 h-12">                                                                        
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            <x-input id="comfrey" class="block w-full" type="number" name="comfrey" wire:model="comfrey" value="0" />                                                                         
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_comfrey['retorno']}}                                                                     
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_comfrey['r_semillas']}}                                                                     
+                        </th>
+                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">                            
+                            {{$r_comfrey['profit']}}                                                                     
+                        </th>
+                    </tr>
+
                 </tbody>                        
             </table>
         </div>
