@@ -58,8 +58,8 @@
         <!-- /seccion presentacion -->
 
         <!-- Menu Web -->
-        <livewire:topfarmers />
-        <!-- / Menu Web -->
+            <livewire:topfarmers />
+        <!-- Menu Web -->
 
         <section class="bg-gray-50 dark:bg-gray-800">
             <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
