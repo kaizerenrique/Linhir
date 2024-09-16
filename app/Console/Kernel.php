@@ -17,10 +17,10 @@ class Kernel extends ConsoleKernel
         $schedule->command('consulta:servidorstatus')->everyMinute();
 
         //revisa las muertes y las kills de los integrantes de linhir
-        $schedule->command('consulta:revisareventos')->everyThreeMinutes();
+        //$schedule->command('consulta:revisareventos')->everyThreeMinutes();
 
         //envia una notificacion diaria con una actividad definida
-        $schedule->command('actividad:actividaldeldia')->dailyAt('12:00');
+        //$schedule->command('actividad:actividaldeldia')->dailyAt('12:00');
     }
 
     /**
