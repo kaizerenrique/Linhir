@@ -28,7 +28,7 @@
                     @if (Route::has('login'))
                             
                         @auth                            
-                            <a href="{{ url('/dashboard') }}" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
+                            <a href="{{ url('dashboard') }}" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
                                 Dashboard
                             </a>  
                         @else                            
@@ -79,7 +79,7 @@
             <div class="mt-3 space-y-1">
                 @if (Route::has('login'))
                     @auth
-                        <x-responsive-nav-link href="{{ route('/dashboard') }}" :active="request()->routeIs('/dashboard')">
+                        <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
                         </x-responsive-nav-link>   
                     @else
