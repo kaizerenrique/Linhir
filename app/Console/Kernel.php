@@ -13,8 +13,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        //consultar el estado del servidor de albion
-        $schedule->command('consulta:servidorstatus')->everyMinute();
+        //consultar el estado del servidor de albion cada 10 segundo en ese horario de tiempo
+        $schedule->command('consulta:servidorstatus')->everyTenSeconds()->between('09:58', '11:10');
 
         //revisa las muertes y las kills de los integrantes de linhir
         //$schedule->command('consulta:revisareventos')->everyThreeMinutes();
