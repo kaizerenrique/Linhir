@@ -359,7 +359,7 @@
             <div
                 class="grid px-4 py-3 text-xs font-semibold tracking-wide uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-2
                 dark:text-gray-300 dark:bg-gray-800">
-                <span class="flex col-span-4 mt-2 md:mt-auto md:justify-end">
+                <span class="flex col-span-6 mt-2 md:mt-auto md:justify-end">
                     {{ $miembros->links() }}
                 </span>
             </div>
