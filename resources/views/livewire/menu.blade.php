@@ -15,7 +15,7 @@
                     <x-nav-link href="{{ route('welcome') }}" :active="request()->routeIs('welcome')">
                         {{ __('Linhir') }}
                     </x-nav-link>
-                    <x-nav-link href="https://linhir.site/#lebennin" :active="request()->routeIs('#lebennin')">
+                    <x-nav-link href="#lebennin" :active="request()->routeIs('#lebennin')">
                         {{ __('Lebennin') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('calculadora de semillas') }}" :active="request()->routeIs('calculadora de semillas')">
