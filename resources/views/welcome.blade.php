@@ -35,7 +35,7 @@
                         Bienvenido al sitio web del Gremio Linhir.</h1>
                     <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
                         Somos un gremio principalmente orientado a recolectores y fabricadores en Albion Online</p>
-                    <a href="#"
+                    <a href="#historia"
                         class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
                         Saber Más
                         <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
@@ -45,7 +45,7 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                     </a>
-                    <a href="#"
+                    <a href="#contacto"
                         class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                         Contactarnos
                     </a>
@@ -57,9 +57,7 @@
         </section>
         <!-- /seccion presentacion -->
 
-        <!-- Menu Web -->
-            <livewire:topfarmers />
-        <!-- Menu Web -->
+        
 
         <section class="bg-gray-50 dark:bg-gray-800">
             <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
@@ -148,7 +146,7 @@
             </div>
         </section>
 
-        <section class="bg-white dark:bg-gray-900">
+        <section class="bg-white dark:bg-gray-900" id="historia">
             <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
                 <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
                     <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Un poco de nuestra historia.</h2>
@@ -163,7 +161,7 @@
             </div>
         </section>
     
-        <section class="bg-white dark:bg-gray-800">
+        <section class="bg-white dark:bg-gray-800" id="contacto">
             <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
                 <div class="mx-auto max-w-screen-sm text-center">
                     <h2 class="mb-4 text-4xl font-extrabold leading-tight text-gray-900 dark:text-white">Contacta con Nosotros</h2>
@@ -175,6 +173,22 @@
             </div>
         </section>
 
+        <!-- Lebennin -->
+        <section class="bg-white dark:bg-gray-900" id="lebennin">
+            <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+                <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                    <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Lebennin</h2>
+                    <p class="mb-4">Lebennin es la Alianza creada por Linhir. La alianza ha sido reorganizada y fundada en varias oportunidades. Actualmente para preservar el Tac de Alianza se creó un Gremio Llamado Lebennin y con él se creó la etiqueta de alianza. </p>
+                    <p class="mb-4">Lebennin es un lugar ficticio que pertenece al legendarium creado por el escritor británico J. R. R. Tolkien y que aparece en su novela El Señor de los Anillos. Está situada en el centro de Gondor y limitada por las Ered Nimrais al norte, el río Anduin al sur y al este, y el río Gilrain al oeste. Su nombre viene dado por los cinco ríos que fluyen por sus tierras: el Celos, el Erui, el Gilrain y su afluente el Serni, y el Sirith.</p>
+                    <p class="mb-4">La ciudad más importante de Lebennin es Linhir.</p>
+                </div>
+                <div class="gap-4 mt-8">
+                    <img src="{{ asset('/plantilla/Lebennin.png') }}" alt="office content 1" style="width:400px;">
+                </div>
+            </div>
+        </section>
+
+        <!-- Pie de Pagina -->
         <footer class="p-4 bg-gray-50 sm:p-6 dark:bg-gray-800">
             <div class="mx-auto max-w-screen-xl">
                 <div class="md:flex md:justify-between">
