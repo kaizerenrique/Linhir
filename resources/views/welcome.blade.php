@@ -102,7 +102,7 @@
                             </svg>
                         </div>
                         <h3 class="mb-2 text-xl font-bold dark:text-white">Crafting</h3>
-                        <p class="text-gray-500 dark:text-gray-400">Disponemos de buenos artesanos así como de edificios e infraestructura entre las que se encuentra un HQ, fabricamos monturas, equipos, armas, pociones y otros bienes.</p>
+                        <p class="text-gray-500 dark:text-gray-400">Disponemos de buenos artesanos así como de edificios e infraestructura entre las que se encuentra un HO, fabricamos monturas, equipos, armas, pociones y otros bienes.</p>
                     </div>
                     <div>
                         <div
@@ -118,7 +118,7 @@
                             </svg>
                         </div>
                         <h3 class="mb-2 text-xl font-bold dark:text-white">Finanzas</h3>
-                        <p class="text-gray-500 dark:text-gray-400">El gremio se financia con un impuesto del 3%, el aporte voluntario de sus miembros, así como de actividades de recolección específicas.</p>
+                        <p class="text-gray-500 dark:text-gray-400">El financiamiento del gremio depende de un conjunto de actividades destinadas para tal fin, así como de actividades pasivas e inversiones.</p>
                     </div>
                     <div>
                         <div
