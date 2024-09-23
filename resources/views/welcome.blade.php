@@ -51,7 +51,7 @@
                     </a>
                 </div>
                 <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                    <img src="{{ asset('/plantilla/linhir_escudo.png') }}" alt="mockup" style="width:400px;">
+                    <img src="{{ asset('/plantilla/cumpleanos_linhir-01.png') }}" alt="Linhir" style="width:400px;">
                 </div>
             </div>
         </section>
@@ -180,7 +180,12 @@
                     <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Lebennin</h2>
                     <p class="mb-4">Lebennin es la Alianza creada por Linhir. La alianza ha sido reorganizada y fundada en varias oportunidades. Actualmente para preservar el Tac de Alianza se creó un Gremio Llamado Lebennin y con él se creó la etiqueta de alianza. </p>
                     <p class="mb-4">Lebennin es un lugar ficticio que pertenece al legendarium creado por el escritor británico J. R. R. Tolkien y que aparece en su novela El Señor de los Anillos. Está situada en el centro de Gondor y limitada por las Ered Nimrais al norte, el río Anduin al sur y al este, y el río Gilrain al oeste. Su nombre viene dado por los cinco ríos que fluyen por sus tierras: el Celos, el Erui, el Gilrain y su afluente el Serni, y el Sirith.</p>
-                    <p class="mb-4">La ciudad más importante de Lebennin es Linhir.</p>
+                    <p class="mb-4">La ciudad que funciona como capital de la región de Lebennin es Linhir.</p>
+                    <div class="mt-8 max-w-screen-sm text-center">                   
+                        <a href="https://discord.gg/VgspTHUAs4" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                            Visita nuestro Discord
+                        </a>
+                    </div>
                 </div>
                 <div class="gap-4 mt-8">
                     <img src="{{ asset('/plantilla/Lebennin.png') }}" alt="office content 1" style="width:400px;">
@@ -194,7 +199,7 @@
                 <div class="md:flex md:justify-between">
                     <div class="mb-6 md:mb-0">
                         <a href="#" class="flex items-center">
-                            <img src="{{ asset('/plantilla/linhir_escudo.png') }}" class="mr-3 h-8" alt="Linhir Logo" />
+                            <img src="{{ asset('/plantilla/cumpleanos_linhir-01.png') }}" class="mr-3 h-8" alt="Linhir Logo" />
                             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Linhir</span>
                         </a>
                     </div>
