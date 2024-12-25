@@ -182,7 +182,7 @@
                     <p class="mb-4">Lebennin es un lugar ficticio que pertenece al legendarium creado por el escritor británico J. R. R. Tolkien y que aparece en su novela El Señor de los Anillos. Está situada en el centro de Gondor y limitada por las Ered Nimrais al norte, el río Anduin al sur y al este, y el río Gilrain al oeste. Su nombre viene dado por los cinco ríos que fluyen por sus tierras: el Celos, el Erui, el Gilrain y su afluente el Serni, y el Sirith.</p>
                     <p class="mb-4">La ciudad que funciona como capital de la región de Lebennin es Linhir.</p>
                     <div class="mt-8 max-w-screen-sm text-center">                   
-                        <a href="https://discord.gg/VgspTHUAs4" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                        <a href="https://discord.gg/j7WQ72Ja" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                             Visita nuestro Discord
                         </a>
                     </div>
