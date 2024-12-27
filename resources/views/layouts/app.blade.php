@@ -4,7 +4,19 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="description" content="Web Oficial del Gremio Linhir">
+
+        <!--  Meta Palabras Clave -->
+        <meta name="keywords" content="Somos un Gremio especializado en la recolección de recursos, su procesamiento y posterior fabricación de items.">
+        <meta name="article:tag" content="Gremio Linhir">
+
+        <!--  Meta Descripción -->
+        <meta name="description" content="Web Oficial del Gremio Linhir">  
+        <!--  Meta Título -->
+        <meta property="og:title" content="Gremio Linhir">
+        <meta property="og:image:alt" content="Gremio Linhir">
+        <!--  Meta Image -->
+        <meta property="og:image" content="{{ asset('/plantilla/Navidad.png') }}">        
+        <meta property="og:url" content="https://linhir.site/">
 
         <title>{{ config('app.name', 'Linhir') }}</title>
 
