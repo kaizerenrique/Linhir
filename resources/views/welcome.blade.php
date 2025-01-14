@@ -51,7 +51,7 @@
                     </a>
                 </div>
                 <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                    <img src="{{ asset('/plantilla/Navidad.png') }}" alt="Linhir" style="width:400px;">
+                    <img src="{{ asset('/plantilla/linhir_escudo.png') }}" alt="Linhir" style="width:400px;">
                 </div>
             </div>
         </section>
@@ -199,7 +199,7 @@
                 <div class="md:flex md:justify-between">
                     <div class="mb-6 md:mb-0">
                         <a href="#" class="flex items-center">
-                            <img src="{{ asset('/plantilla/Navidad.png') }}" class="mr-3 h-8" alt="Linhir Logo" />
+                            <img src="{{ asset('/plantilla/linhir_escudo.png') }}" class="mr-3 h-8" alt="Linhir Logo" />
                             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Linhir</span>
                         </a>
                     </div>
